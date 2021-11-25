@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: 0d01bf3581eef0641800499337adcab4
+ModelImporter:
+  serializedVersion: 21100
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 6e05f6ae76155ed4d9092ea8b99e8c68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 6a3aeb5987c30a647b31a45199826b03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 3b7a19abbd1a5934cb5579b2e471dc1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: f28087f0d06ab2f4bbf43928788f9c25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: eaf0121a8cdeb0e4db5a78323f3d9e3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: 89bbdf908602442469d7e4f65e3c9ee5, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - ff997790ac6e04d44bd8e250ce804496
+  - 047fa13f53ef5264eb660a2dd574a519
+  - a99f0136064161a4b8281990395ced32
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: felix(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube
+      parentName: felix(Clone)
+      position: {x: 1.4048758, y: 1.1881998, z: -0.39670625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -41.11744, y: -41.11744, z: -41.11744}
+    - name: Cube.001
+      parentName: felix(Clone)
+      position: {x: 0.061690748, y: 0.5243305, z: -0.19453731}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.42533, y: 18.887993, z: 38.42533}
+    - name: Cube.002
+      parentName: felix(Clone)
+      position: {x: 1.2815751, y: 1.403904, z: 0.26634973}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 17.426615, y: 15.72513, z: 15.72513}
+    - name: Cube.003
+      parentName: felix(Clone)
+      position: {x: -0.4510744, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.004
+      parentName: felix(Clone)
+      position: {x: -0.24846618, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.005
+      parentName: felix(Clone)
+      position: {x: -0.056098755, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.008
+      parentName: felix(Clone)
+      position: {x: 0.118421845, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.007
+      parentName: felix(Clone)
+      position: {x: 0.32103008, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.006
+      parentName: felix(Clone)
+      position: {x: 0.5133975, y: 1.9503753, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.015
+      parentName: felix(Clone)
+      position: {x: 0.20161182, y: 0.8616737, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.016
+      parentName: felix(Clone)
+      position: {x: 0.036848366, y: 0.8616737, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.017
+      parentName: felix(Clone)
+      position: {x: -0.14405674, y: 0.8616737, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Circle.001
+      parentName: felix(Clone)
+      position: {x: 0.26441985, y: 1.5951729, z: 0.3055903}
+      rotation: {x: -0.035229586, y: 0, z: -0, w: 0.9993793}
+      scale: {x: 33.744606, y: 33.74461, z: 33.74461}
+    - name: Cube.011
+      parentName: felix(Clone)
+      position: {x: 0.0675941, y: 1.5057114, z: 0.3230146}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -32.524227, y: -4.120927, z: -4.9824533}
+    - name: Cylinder.001
+      parentName: felix(Clone)
+      position: {x: 5.770184, y: 0.40198123, z: -7.490231}
+      rotation: {x: -0.5300383, y: -0.46803787, z: 0.46803784, w: 0.53003824}
+      scale: {x: 99.99999, y: 100, z: 99.99999}
+    - name: Circle.003
+      parentName: felix(Clone)
+      position: {x: 0.22330587, y: 2.0517542, z: -1.2389691}
+      rotation: {x: -0.035229586, y: 0, z: -0, w: 0.9993793}
+      scale: {x: 33.744606, y: 33.74461, z: 33.74461}
+    - name: Cube.009
+      parentName: felix(Clone)
+      position: {x: 0.026480138, y: 1.9622929, z: -1.2215447}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -32.524227, y: -4.120927, z: -4.9824533}
+    - name: Cylinder.002
+      parentName: felix(Clone)
+      position: {x: 3.9393532, y: 3.1569595, z: -7.490231}
+      rotation: {x: 0.3796834, y: 0.5965237, z: -0.5965237, w: -0.37968335}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Empty
+      parentName: felix(Clone)
+      position: {x: -16.689287, y: 27.317186, z: -1.1649384}
+      rotation: {x: 0.00017725345, y: 0.025487505, z: 0.00695124, w: 0.99965096}
+      scale: {x: 99.99999, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
