@@ -22,6 +22,7 @@ public class GenerateurIles : MonoBehaviour
     public List<List<Material>> _biomesMats => biomesMats;
     private GameObject _unDauphin; //Pour que le dauphin suivent le joueur du regard
     private int apparaitreDauphin = 0; //Nous permettra de faire apparaitre le dauphin
+    private int _objectif; //#tim Thomas Servira a calculer l'objectif du jeu
 
 
     public Material pasExplorer; //Permet de changer les texture de l'ile, quelle soit explorer ou non
@@ -198,6 +199,10 @@ public class GenerateurIles : MonoBehaviour
                     unCube.transform.rotation = Quaternion.Euler(0, rotRandom, 0);
                     
                     unCube.transform.parent = gameObject.transform; //Centre l'ile sur son generateur
+
+                    //CREATION DE L'OBJECTIF
+                    _objectif++;
+                    GameManager.instance.SetObjectif(_objectif);
                 }
             }
         }
