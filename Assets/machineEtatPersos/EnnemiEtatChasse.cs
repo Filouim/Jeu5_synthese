@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnnemiEtatChasse : EnnemiEtatsBase
 {
+    private MovePerso perso;
+
     public override void InitEtat(EnnemiEtatsManager ennemi)
     {
         ennemi.StartCoroutine(Anime(ennemi));
@@ -18,9 +20,9 @@ public class EnnemiEtatChasse : EnnemiEtatsBase
         // Trouve la cible et la met en destination de l'agent
         ennemi.agent.destination = ennemi.cible.transform.position;
 
-        // Tant que l'agent est a plus de 2.5 unite de la cible
+        // Tant que l'agent est a une certaine distance de la cible
         // ou bien que le path n'est pas encore calcule
-        while (ennemi.agent.remainingDistance > 2.5f || ennemi.agent.pathPending)
+        while (ennemi.agent.remainingDistance > ennemi.distanceCible || ennemi.agent.pathPending)
         {
             // Ajuste la destination sur la position de la cible
             ennemi.agent.destination = ennemi.cible.transform.position;

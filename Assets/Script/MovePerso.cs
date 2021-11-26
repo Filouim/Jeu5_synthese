@@ -6,6 +6,7 @@ public class MovePerso : MonoBehaviour
     [SerializeField] private float vitesseMouvement = 20.0f;
     [SerializeField] private float vitesseRotation = 3.0f;
     [SerializeField] private float impulsionSaut = 30.0f;
+    [SerializeField] private float tempsInvincible = 3f;
     [SerializeField] private float gravite = 0.2f;
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
@@ -16,8 +17,13 @@ public class MovePerso : MonoBehaviour
 
     private GameManager _gameManager;
     private GameObject _laTortue;
-    private float vitesseSaut;
     private Vector3 directionsMouvement = Vector3.zero;
+
+    private float vitesseSaut;
+    private bool estInvincible = false;
+
+    private static MovePerso _instance;
+    public static MovePerso instance => _instance;
 
     Animator animator;
     CharacterController controller;
@@ -108,5 +114,27 @@ public class MovePerso : MonoBehaviour
     {
         _laTortue.transform.position = Vector3.MoveTowards(_laTortue.transform.position, transform.position, 7 * Time.deltaTime);
         _laTortue.transform.rotation = transform.rotation;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Une collision à été détecté!");
+        Debug.Log(other.tag);
+        if (other.tag == "Ennemi")
+        {
+            Debug.Log("L'ennemi a touché le joueur!");
+            if (!estInvincible) StartCoroutine(Invincible());
+        }
+    }
+
+    private IEnumerator Invincible()
+    {
+        estInvincible = true;
+        Debug.Log("Je suis invincible!");
+
+        yield return new WaitForSeconds(tempsInvincible);
+        
+        estInvincible = false;
+        Debug.Log("Je ne suis plus Superman!");
     }
 }
