@@ -10,8 +10,8 @@ public class MovePerso : MonoBehaviour
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
     [SerializeField] private GameObject _tortue;
-
-    public AudioSource _saut;
+    
+   
     public AudioSource _marche;
 
     private GameManager _gameManager;
@@ -24,7 +24,7 @@ public class MovePerso : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _saut = GetComponent<AudioSource>();
+    
         _marche = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
@@ -37,29 +37,25 @@ public class MovePerso : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate()
+    {   
+        
+        
+
+
         transform.Rotate(0, Input.GetAxis("Horizontal") * vitesseRotation * Time.deltaTime, 0); //permet de deplacer le personnage vers l'avant a l'aide des fleches haut et bas du clavier en cliquant sur ces derniere
         float vitesse = Input.GetAxis("Vertical") * vitesseMouvement; //permet de changer l'orientation du personnage a l'aide des fleches droite et gauche du clavier en cliquant sur ces dernieres
-        if(Input.GetAxis("Horizontal") > 0)
-        {
+        if(Input.GetAxis("Horizontal") > 0 )
+        {    
+         
             _marche.Play();
         }
-        animator.SetBool("enCourse", vitesse > 0); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
+        animator.SetBool("enCourse", vitesse > 0 && controller.isGrounded); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
         directionsMouvement = new Vector3(0, 0, vitesse); //permet de savoir la direction dans laquelle le personnage se dirige a l'aide de sa vitesse en la "mettant" dans l'axe des z 
         directionsMouvement = transform.TransformDirection(directionsMouvement); //permet d'obtenir la vrai direction vers ou le perso se dirige en changeant les donnees de la variable directions en world space 
 
-        if(Input.GetButton("Jump") && controller.isGrounded){
-            
-            vitesseSaut = impulsionSaut; //permet au perso de sauter dans le cas au il touche le sol en changeant la valeur en y de vitesseSaut (qui est une variable... qui varie) par impulsionSaut
-        } 
-
-        if(Input.GetButton("Jump"))
-        {
-            _saut.Play();
-        }
-        
-        animator.SetBool("enSaut", !controller.isGrounded && vitesseSaut >- impulsionSaut); //permet au perso de changer d'animation a l'aide de la variable isGrouded ce qui lui permet de verifier si le personnage touche le sol ou non
+       
+      
         directionsMouvement.y += vitesseSaut; //permet au personnage de sauter dans les airs a l'aide de vitesseSaut en donnant cette valeur a la valeur en y de directionMouvement
 
         if (!controller.isGrounded) vitesseSaut -= gravite; //permet au perso de subir de la gravite a l'aide de isGrounded et de la gravite, en soustrayant la valeur de vitesseSaut par la gravite a chaque frames
