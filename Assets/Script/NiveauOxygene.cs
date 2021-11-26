@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 public class NiveauOxygene : MonoBehaviour
 {
-    public Slider slider; // Valeur de la barre d'oxygene
+    [SerializeField] private Slider slider; // Valeur de la barre d'oxygene
 
     /// <summary>
     /// Ajuste le niveau d'oxygene maximum selon la valeur en parametre.
@@ -29,5 +29,10 @@ public class NiveauOxygene : MonoBehaviour
     public void SetOxygene(float oxygene)
     {
         slider.value = oxygene;
+    }
+
+    public void CollisionEnnemi()
+    {
+
     }
 }

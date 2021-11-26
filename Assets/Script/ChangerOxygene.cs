@@ -5,14 +5,13 @@ using UnityEngine;
 /// <summary>
 /// A integrer a l'interieur de la classe GameManager.
 /// </summary>
-public class TestDegats : MonoBehaviour
+public class ChangerOxygene : MonoBehaviour
 {
-    public float maxOxygene = 100f; // Niveau d'oxygene maximum
-    public float oxygeneActuel; // Niveau d'oxygene actuel
-    public float oxygenePerdu = 5f; // Niveau d'oxygene que le joueur pert a chaque coup
-    public float delaiPerteOxygene = 1f; // Delai de la perte d'oxygene en secondes
+    [SerializeField] private NiveauOxygene barreOxygene; // Reference a la barre d'oxygene
+    [SerializeField] private float maxOxygene = 100f; // Niveau d'oxygene maximum
+    [SerializeField] private float oxygenePerdu = 5f; // Niveau d'oxygene que le joueur pert a chaque coup
 
-    public NiveauOxygene barreOxygene; // Reference a la barre d'oxygene
+    private float oxygeneActuel; // Niveau d'oxygene actuel
 
     /// <summary>
     /// Start is called before the first frame update.
@@ -21,8 +20,6 @@ public class TestDegats : MonoBehaviour
     {
         oxygeneActuel = maxOxygene;
         barreOxygene.SetMaxOxygene(maxOxygene);
-
-        StartCoroutine(Delai(oxygenePerdu, delaiPerteOxygene));
     }
 
     /// <summary>
@@ -58,21 +55,5 @@ public class TestDegats : MonoBehaviour
         if (oxygeneActuel > maxOxygene) oxygeneActuel = maxOxygene;
 
         barreOxygene.SetOxygene(oxygeneActuel);
-    }
-
-    /// <summary>
-    /// Appelle la fonction SubirDegats en boucle avec un delai.
-    /// </summary>
-    /// <param name="degats"></param>
-    /// <param name="delai"></param>
-    /// <returns></returns>
-    private IEnumerator Delai(float degats, float delai)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(delai);
-
-            SubirDegats(degats);
-        }
     }
 }

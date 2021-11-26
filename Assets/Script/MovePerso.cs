@@ -75,7 +75,7 @@ public class MovePerso : MonoBehaviour
         if(transform.position.y < -100f)
         {
             RespawnJoueur();
-            _gameManager.BonusMalusOxygene(-25f);
+            _gameManager.SubirDegats(25f);
         }
 
         DeplacementDeLaTortue();
