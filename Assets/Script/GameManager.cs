@@ -7,14 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private float _nbOxygene = 100f;
+    [SerializeField] private Slider _slider; // Valeur de la barre d'oxygene
+    [SerializeField] private Text _txtPointage; // Champ texte du pointage
+    [SerializeField] private float _maxOxygene = 100f; // Niveau d'oxygene maximum
+    [SerializeField] private float _delaiPerteOxygene = 1f; // Frequence a laquelle le joueur perd de l'oxygene
+    
+    private float _oxygeneActuel; // Niveau d'oxygene actuel
+    private int _points = 0; // Nbre de points du perso
+
     private static GameManager _instance;
     public static GameManager instance => _instance;
-    public Slider slider; // Valeur de la barre d'oxygene
-    public int points = 0;
-    public Text txtPointage;
 
+    // Singleton
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -26,17 +30,19 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
     }
+
     void Start()
     {
         // _displayPieces = GetComponent<TextMeshPro>();
-        SetMaxOxygene(_nbOxygene);
+        // SetMaxOxygene(_maxOxygene);
+        _oxygeneActuel = _maxOxygene;
     }
 
     // Update is called once per frame
     void Update()
     {
         PerdOxygene();
-        if(_nbOxygene < 0f)
+        if(_oxygeneActuel <= 0f)
         {
             GetComponent<ChangerScene>().LoadScene("Defaite");
         }
@@ -50,33 +56,21 @@ public class GameManager : MonoBehaviour
     // }
 
     /// <summary>
-    /// Ajuste le niveau d'oxygene maximum selon la valeur en parametre.
-    /// </summary>
-    /// <param name="oxygene">Valeur d'oxygene.</param>
-    public void SetMaxOxygene(float oxygene)
-    {
-        slider.maxValue = oxygene;
-        slider.value = oxygene;
-    }
-
-    /// <summary>
     /// Ajuste la barre d'oxygene selon la valeur en parametre.
     /// </summary>
     /// <param name="oxygene">Valeur d'oxygene.</param>
     public void SetOxygene(float oxygene)
     {
-        slider.value = oxygene;
+        _slider.value = oxygene;
     }
-
-    
 
     /// <summary>
     /// Ajoute un point au champ de texte du pointage.
     /// </summary>
     public void AjouterPoints(int montant)
     {
-        points = points + montant;
-        txtPointage.text = points.ToString();
+        _points = _points + montant;
+        _txtPointage.text = _points.ToString();
     }
 
     /// <summary>
@@ -93,18 +87,32 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void PerdOxygene()
     {
-        _nbOxygene -= Time.deltaTime * 1;
-        SetOxygene(_nbOxygene);
+        _oxygeneActuel -= Time.deltaTime * _delaiPerteOxygene;
+
+        SetOxygene(_oxygeneActuel);
     }
 
-    public float BonusMalusOxygene(float montant)
-    {  
-        _nbOxygene += montant;
-        //Limite la quantitee d'oxygene que le joueur peut avoir
-        if(_nbOxygene > 100f)
-        {
-            _nbOxygene = 100f;
-        }
-        return _nbOxygene;
+    /// <summary>
+    /// Inflige des degats au joueur.
+    /// </summary>
+    /// <param name="degats"></param>
+    public void SubirDegats(float degats)
+    {
+        _oxygeneActuel -= degats;
+
+        SetOxygene(_oxygeneActuel);
+    }
+    
+    /// <summary>
+    /// Donne de l'oxygene au joueur.
+    /// </summary>
+    /// <param name="ajout"></param>
+    public void AjouterOxygene(float ajout)
+    {
+        _oxygeneActuel += ajout;
+
+        if (_oxygeneActuel > _maxOxygene) _oxygeneActuel = _maxOxygene;
+
+        SetOxygene(_oxygeneActuel);
     }
 }

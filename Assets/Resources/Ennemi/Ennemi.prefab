@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 3791295210661114591}
   m_Layer: 0
   m_Name: Ennemi
-  m_TagString: Untagged
+  m_TagString: Ennemi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec5ba4e3ae33ed49b3aca12e431297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesseChasse: 7
+  vitesseChasse: 8
   vitessePromenade: 5
 --- !u!1 &4122350434512369695
 GameObject:
