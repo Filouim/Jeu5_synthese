@@ -11,13 +11,15 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
 
     public override void InitEtat(BiomesEtatsManager biome)
     {
-        switch(Random.Range(0,11)) {
+        switch(Random.Range(0,30)) {
             case 0:
                 _unDechet = Resources.Load("Items/baril") as GameObject;
                 break;
             case 1 :
                 _unDechet = Resources.Load("Items/colonneI") as GameObject;
                 break;
+            // case 2 : 
+            //     _unDechet = Resources.Load() as GameObject;
             default:
                 break;
         }
