@@ -23,7 +23,7 @@ public class Bulles : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            _gameManager.BonusMalusOxygene(25f);
+            _gameManager.AjouterOxygene(25f);
             _bullesPrise.Play();
             Debug.Log("He touched me");
             Destroy(gameObject, 1f);
