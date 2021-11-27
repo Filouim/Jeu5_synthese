@@ -4,27 +4,39 @@ using System.Collections;
 public class MovePerso : MonoBehaviour
 {
     [SerializeField] private float vitesseMouvement = 20.0f;
-    [SerializeField] private float vitesseRotation = 3.0f;
+
     [SerializeField] private float impulsionSaut = 30.0f;
     [SerializeField] private float gravite = 0.2f;
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
     [SerializeField] private GameObject _tortue;
-    
-   
+
+    private string moveInputAxis = "Vertical";
+    private string turnInputAxis = "Horizontal";
+
+    [SerializeField] private float rotation = 360;
+
+
+
+    [SerializeField] private Transform _currentGameObject;
+
     public AudioSource _marche;
 
     private GameManager _gameManager;
     private GameObject _laTortue;
-    private float vitesseSaut;
-    private Vector3 directionsMouvement = Vector3.zero;
+
+    private Vector3 directionsMouvement;
+
+    private Vector3 velocity;
+
+
 
     Animator animator;
     CharacterController controller;
     // Start is called before the first frame update
     void Awake()
     {
-    
+
         _marche = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
@@ -38,37 +50,17 @@ public class MovePerso : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {   
-        
-        
+    {
+        float moveAxis = Input.GetAxisRaw(moveInputAxis);
+        float turnAxis = Input.GetAxisRaw(turnInputAxis);
 
+        DoInput(turnAxis);
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * vitesseRotation * Time.deltaTime, 0); //permet de deplacer le personnage vers l'avant a l'aide des fleches haut et bas du clavier en cliquant sur ces derniere
-        float vitesse = Input.GetAxis("Vertical") * vitesseMouvement; //permet de changer l'orientation du personnage a l'aide des fleches droite et gauche du clavier en cliquant sur ces dernieres
-        if(Input.GetAxis("Horizontal") > 0 )
-        {    
-         
-            _marche.Play();
-        }
-        animator.SetBool("enCourse", vitesse > 0 && controller.isGrounded); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
-        directionsMouvement = new Vector3(0, 0, vitesse); //permet de savoir la direction dans laquelle le personnage se dirige a l'aide de sa vitesse en la "mettant" dans l'axe des z 
-        directionsMouvement = transform.TransformDirection(directionsMouvement); //permet d'obtenir la vrai direction vers ou le perso se dirige en changeant les donnees de la variable directions en world space 
+        animator.SetBool("enCourse", moveAxis != 0); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
 
-       
-      
-        directionsMouvement.y += vitesseSaut; //permet au personnage de sauter dans les airs a l'aide de vitesseSaut en donnant cette valeur a la valeur en y de directionMouvement
+        _force.transform.localScale = new Vector3(2f * vitesseMouvement, 2f * vitesseMouvement, 2f * vitesseMouvement); //Change la taille du champ de force selon la vitesse du personnage
 
-        if (!controller.isGrounded) vitesseSaut -= gravite; //permet au perso de subir de la gravite a l'aide de isGrounded et de la gravite, en soustrayant la valeur de vitesseSaut par la gravite a chaque frames
-
-        controller.Move(directionsMouvement * Time.deltaTime); //Deplace le personnage selon la direction auxquel il se deplace
-        if(vitesse >= 0)
-        {
-            _vision.fieldOfView = 60 + 4 * vitesse; //change le FOV de la camera selon la vitesse du personnage
-        }
-
-        _force.transform.localScale = new Vector3(2f*vitesse, 2f*vitesse, 2f*vitesse); //Change la taille du champ de force selon la vitesse du personnage
-
-        if(transform.position.y < -100f)
+        if (transform.position.y < -100f)
         {
             RespawnJoueur();
             _gameManager.SubirDegats(25f);
@@ -82,7 +74,6 @@ public class MovePerso : MonoBehaviour
     {
         controller.enabled = false;
         transform.position = new Vector3(0f, 12f, 0f);
-        
         ReactiveController();
     }
 
@@ -90,7 +81,6 @@ public class MovePerso : MonoBehaviour
     private void ReactiveController()
     {
         controller.enabled = true;
-        vitesseSaut = 0f; //S'arrange pour que le joueur ne tombe pas a des vitesse halucinantes
     }
 
     /// <summary>
@@ -108,5 +98,50 @@ public class MovePerso : MonoBehaviour
     {
         _laTortue.transform.position = Vector3.MoveTowards(_laTortue.transform.position, transform.position, 7 * Time.deltaTime);
         _laTortue.transform.rotation = transform.rotation;
+    }
+
+
+    /*Code Felix -> changement de gestion de déplacement de personnage + vider fixedUpdate + flip 180 degrés */
+
+    private void DoInput(float turn)
+    {
+        Movement();
+        Turn(turn);
+    }
+    private void Movement()
+    {
+
+        float movez = Input.GetAxisRaw("Vertical");
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        switch (movez)
+        {
+            case -1:
+                transform.localScale = new Vector3(1, 1, -1);
+                break;
+
+            case 1:
+                transform.localScale = new Vector3(1, 1, 1);
+                break;
+
+        }
+
+        directionsMouvement = new Vector3(0, 0, movez);
+        directionsMouvement = transform.TransformDirection(directionsMouvement);
+        directionsMouvement *= vitesseMouvement;
+
+
+
+        controller.Move(directionsMouvement * Time.deltaTime);
+        velocity.y += gravite * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void Turn(float inp)
+    {
+        transform.Rotate(0, inp * rotation * Time.deltaTime, 0);
     }
 }
