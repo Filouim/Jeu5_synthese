@@ -25,7 +25,7 @@ public class MovePerso : MonoBehaviour
 
     private GameManager _gameManager;
     private GameObject _laTortue;
-    private Vector3 directionsMouvement = Vector3.zero;
+
 
     private float vitesseSaut;
     private bool estInvincible = false;
@@ -120,7 +120,7 @@ public class MovePerso : MonoBehaviour
         Debug.Log("Je suis invincible!");
 
         yield return new WaitForSeconds(tempsInvincible);
-        
+
         estInvincible = false;
         Debug.Log("Je ne suis plus Superman!");
     }
