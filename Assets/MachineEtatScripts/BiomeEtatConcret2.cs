@@ -7,6 +7,7 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
     private GameObject _unObject;
     public override void InitEtat(BiomesEtatsManager biome)
     {
+        GameManager.instance.ObjectifProgresse();
         Object premierVariant = Resources.Load("Mats/Biomes/b"+biome.biomeMateriel+"_1");
         int nbRandom = Random.Range(1,10);
         if(premierVariant.name == "b5_1"){
