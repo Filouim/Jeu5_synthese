@@ -27,7 +27,7 @@ public class MovePerso : MonoBehaviour
     private GameObject _laTortue;
 
 
-    private float vitesseSaut;
+
     private bool estInvincible = false;
 
     private static MovePerso _instance;
