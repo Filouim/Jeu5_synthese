@@ -191,7 +191,7 @@ public class GenerateurIles : MonoBehaviour
                     unCube.GetComponent<BiomesEtatsManager>().perso = perso;
 
                     //Je ne comprend pas comment instancier le dauphin sur 1 biome sur 20, donc je vais les instancier comme ça, je m'en fous
-                    if (apparaitreDauphin == 1000)
+                    if (apparaitreDauphin == 1600)
                     {
                         _unDauphin = Instantiate(dauphin, new Vector3(unCube.transform.position.x, unCube.transform.position.y + 2.0f, unCube.transform.position.z), Quaternion.identity);
                         apparaitreDauphin = 0;
