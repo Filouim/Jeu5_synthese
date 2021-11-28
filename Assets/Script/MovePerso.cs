@@ -61,7 +61,7 @@ public class MovePerso : MonoBehaviour
 
         animator.SetBool("enCourse", moveAxis != 0); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
 
-        _force.transform.localScale = new Vector3(2f * vitesseMouvement, 2f * vitesseMouvement, 2f * vitesseMouvement); //Change la taille du champ de force selon la vitesse du personnage
+        //Change la taille du champ de force selon la vitesse du personnage
 
         if (transform.position.y < -100f)
         {
@@ -141,15 +141,21 @@ public class MovePerso : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
+        //champ de force ici
         switch (movez)
         {
             case -1:
-                transform.localScale = new Vector3(1, 1, -1);
+                transform.localScale = new Vector3(0.5f, 0.5f, -0.5f);
+                _force.transform.localScale = new Vector3(8f, 8f, 8f);
                 break;
 
             case 1:
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                _force.transform.localScale = new Vector3(8f, 8f, 8f);
+                break;
+
+            default:
+                _force.transform.localScale = new Vector3(0, 0, 0);
                 break;
 
         }
