@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3791295210661114590}
   - component: {fileID: 3791295210661114589}
   - component: {fileID: 3791295210661114591}
+  - component: {fileID: 7239350443977413265}
   - component: {fileID: 1459445739235507788}
   m_Layer: 0
   m_Name: Ennemi
@@ -290,6 +291,20 @@ CapsuleCollider:
   m_Height: 9.01
   m_Direction: 2
   m_Center: {x: -1, y: 2.27, z: -0.37}
+--- !u!136 &7239350443977413265
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061133306812780418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.188086
+  m_Height: 11.100019
+  m_Direction: 2
+  m_Center: {x: -0.74797535, y: 2.3416348, z: -1.3635826}
 --- !u!1 &4122350434512369695
 GameObject:
   m_ObjectHideFlags: 0
