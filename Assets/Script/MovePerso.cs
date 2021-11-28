@@ -43,7 +43,7 @@ public class MovePerso : MonoBehaviour
         _marche = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        ApparaitreTortue();
+        // ApparaitreTortue();
     }
 
     void Start()
@@ -61,7 +61,7 @@ public class MovePerso : MonoBehaviour
 
         animator.SetBool("enCourse", moveAxis != 0); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
 
-        _force.transform.localScale = new Vector3(2f * vitesseMouvement, 2f * vitesseMouvement, 2f * vitesseMouvement); //Change la taille du champ de force selon la vitesse du personnage
+        //Change la taille du champ de force selon la vitesse du personnage
 
         if (transform.position.y < -100f)
         {
@@ -69,7 +69,7 @@ public class MovePerso : MonoBehaviour
             _gameManager.SubirDegats(25f);
         }
 
-        DeplacementDeLaTortue();
+        // DeplacementDeLaTortue();
     }
 
     //Permet de faire reapparaitre le joueur au dessus de l'ile en plein milieu
@@ -89,19 +89,19 @@ public class MovePerso : MonoBehaviour
     /// <summary>
     /// Fait apparaitre et fait deplacer la tortue (a modifier eventuellement)
     /// </summary>
-    private void ApparaitreTortue()
-    {
-        _laTortue = Instantiate(_tortue, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-    }
+    // private void ApparaitreTortue()
+    // {
+    //     _laTortue = Instantiate(_tortue, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+    // }
 
-    /// <summary>
-    /// Fait en sorte que la tortue suive le joueur
-    /// </summary>
-    private void DeplacementDeLaTortue()
-    {
-        _laTortue.transform.position = Vector3.MoveTowards(_laTortue.transform.position, transform.position, 7 * Time.deltaTime);
-        _laTortue.transform.rotation = transform.rotation;
-    }
+    // /// <summary>
+    // /// Fait en sorte que la tortue suive le joueur
+    // /// </summary>
+    // private void DeplacementDeLaTortue()
+    // {
+    //     _laTortue.transform.position = Vector3.MoveTowards(_laTortue.transform.position, transform.position, 7 * Time.deltaTime);
+    //     _laTortue.transform.rotation = transform.rotation;
+    // }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -141,15 +141,21 @@ public class MovePerso : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
+        //champ de force ici
         switch (movez)
         {
             case -1:
-                transform.localScale = new Vector3(1, 1, -1);
+                transform.localScale = new Vector3(0.5f, 0.5f, -0.5f);
+                _force.transform.localScale = new Vector3(8f, 8f, 8f);
                 break;
 
             case 1:
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                _force.transform.localScale = new Vector3(8f, 8f, 8f);
+                break;
+
+            default:
+                _force.transform.localScale = new Vector3(0, 0, 0);
                 break;
 
         }

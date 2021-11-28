@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 511004316159780922}
   - component: {fileID: 44414543125303255}
-  - component: {fileID: 2612801000872312352}
+  - component: {fileID: 5512745500920091586}
   m_Layer: 0
   m_Name: Tortue
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2612801000872312352
+--- !u!114 &5512745500920091586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,9 +125,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 890766163977794176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b1929e95f9bca44916ad4e0e674098, type: 3}
+  m_Script: {fileID: 11500000, guid: da9f9a33a48d650418851bc6ac05ccc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetDistance: 0.5
+  smoothTime: 10
+  target: {fileID: 0}
 --- !u!1 &905981018361314443
 GameObject:
   m_ObjectHideFlags: 0
