@@ -407,11 +407,11 @@ MonoBehaviour:
   vitesseMouvement: 8
   vitesseRotation: 90
   impulsionSaut: 15
+  tempsInvincible: 3
   gravite: 0.2
   _force: {fileID: 349048948}
   _vision: {fileID: 963194227}
   _tortue: {fileID: 890766163977794176, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
-  _saut: {fileID: 681864485}
   _marche: {fileID: 681864487}
 --- !u!82 &681864485
 AudioSource:

@@ -11,6 +11,7 @@ public class EnnemiEtatsManager : MonoBehaviour
     public EnnemiEtatChasse chasse = new EnnemiEtatChasse();
     public float vitesseChasse = 7f;
     public float vitessePromenade = 5f;
+    public float distanceCible = 5f;
 
     public GameObject cible { get; set; }
     public Transform origine { get; set; }

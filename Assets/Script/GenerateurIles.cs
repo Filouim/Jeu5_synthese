@@ -26,7 +26,7 @@ public class GenerateurIles : MonoBehaviour
 
 
     public Material pasExplorer; //Permet de changer les texture de l'ile, quelle soit explorer ou non
-    
+
 
     void Start()
     {
@@ -51,12 +51,14 @@ public class GenerateurIles : MonoBehaviour
         do
         {
             Object mat = Resources.Load("Mats/Biomes/b" + nbBiomes + "_" + nbVariant);
-            if(mat != null) //Tant que mot n'est pas null, qu'il y a un biome nomme comme celui-la
+            if (mat != null) //Tant que mot n'est pas null, qu'il y a un biome nomme comme celui-la
             {
                 tpBiome.Add((Material)mat); //Ajoute mot  a la liste tpBiome
                 nbVariant++; //Augmente nbVaraint de 1 pour voir si il y a d'autre dans ce biome
-            } else {
-                if(nbVariant == 1)
+            }
+            else
+            {
+                if (nbVariant == 1)
                 {
                     ResteDesMats = false; //Si le nbVariant est encore egale a 1, cela veut dire qu'il n'y a pas d'autres biomes
                 }
@@ -70,12 +72,12 @@ public class GenerateurIles : MonoBehaviour
             }
         } while (ResteDesMats); //Tant que ResteDesMats est a true, la boucle continuera
     }
-    
+
     void CreerMap()
     {
         // GenererTerrain(profondeurIle, largeurIle, attenuateur);
         // float[,] map = GenererBordureEau(profondeurIle, largeurIle);
-        float[,] map = GenererInnondationCirculaire(profondeurIle, largeurIle); 
+        float[,] map = GenererInnondationCirculaire(profondeurIle, largeurIle);
         float[,] ile = GenererTerrain(profondeurIle, largeurIle, attenuateur, map);
         // DessinerIle(ile);
         GenererIle(ile);
@@ -87,23 +89,23 @@ public class GenerateurIles : MonoBehaviour
     {
         float[,] ocean = new float[maxZ, maxX]; // le tableau qui contient les coordonnees de tout les cubes
 
-        float cX = maxX/2; // centre du cercle en X
-        float cZ = maxZ/2; // centre du cercle en Z
-        float rayonEau = maxZ/2; // le Rayon du cercle
+        float cX = maxX / 2; // centre du cercle en X
+        float cZ = maxZ / 2; // centre du cercle en Z
+        float rayonEau = maxZ / 2; // le Rayon du cercle
 
-        for(int z = 0; z < maxZ; z++)
+        for (int z = 0; z < maxZ; z++)
         {
-            for(int x = 0; x < maxX; x++)
+            for (int x = 0; x < maxX; x++)
             {
                 float xDistance = cX - x; //Distance en x entre le centre et le point present
                 float zDistance = cZ - z; //Distance en z entre le centre et le point present
                 float val = Mathf.Sqrt(xDistance * xDistance + zDistance * zDistance); //Calcul la distance val, qui est la distance reel entre le centre et le point present
-                float y = val/rayonEau; //Ramene val sous une valeur entre 0 et 1 pour qu'elle soit bien adapte pour la sigmoide
-                ocean[z,x] = Sigmoid(y); //Prend l'ocean et donne la valeur y a la sigmoide pour creer une ile realiste
+                float y = val / rayonEau; //Ramene val sous une valeur entre 0 et 1 pour qu'elle soit bien adapte pour la sigmoide
+                ocean[z, x] = Sigmoid(y); //Prend l'ocean et donne la valeur y a la sigmoide pour creer une ile realiste
             }
         }
-            
-        return ocean; 
+
+        return ocean;
     }
 
     //THOMAS ST-PIERRE Permet de faire une ile qui est realiste en faisant de tres petite inclinaisons
@@ -111,43 +113,43 @@ public class GenerateurIles : MonoBehaviour
     {
         float k = 15f; //Intensité de la variation
         float c = 0.7f; //Taille generale de l'ile, ici c'est 70% de l'ile
-        return 1/(1+Mathf.Exp(-k*(value-c))); //Retourne sigmoide, une fonction en S
+        return 1 / (1 + Mathf.Exp(-k * (value - c))); //Retourne sigmoide, une fonction en S
     }
 
     private float[,] GenererBordureEau(int maxZ, int maxX)
     {
         float[,] ocean = new float[maxZ, maxX]; //Les coordonnes de l'ocean
-        float centreX = maxX/2; //le centre de l'ile
-        float centreZ = maxZ/2; //le centre de l'ile
-        for(int z = 0; z < maxX; z++)
+        float centreX = maxX / 2; //le centre de l'ile
+        float centreZ = maxZ / 2; //le centre de l'ile
+        for (int z = 0; z < maxX; z++)
         {
-            for(int x = 0; x < maxZ; x++)
+            for (int x = 0; x < maxZ; x++)
             {
-                float yx = (Mathf.Abs(x-centreX)/centreX);
-                float yz = (Mathf.Abs(z-centreZ)/centreZ);
+                float yx = (Mathf.Abs(x - centreX) / centreX);
+                float yz = (Mathf.Abs(z - centreZ) / centreZ);
                 float y = Mathf.Max(yx, yz);
-                ocean[z,x] = Sigmoid(y);
+                ocean[z, x] = Sigmoid(y);
             }
         }
         return ocean;
     }
-    
+
     //THOMAS ST-PIERRE Genere une ile rectangulaire
     private float[,] GenererTerrain(int maxZ, int maxX, float attenuateur, float[,] inondation)
     {
         int bruitAleatoire = Random.Range(0, 100000); //un nombre aleatoire qui permettra de toujours faire des iles aleatoire
         float[,] terrain = new float[maxZ, maxX]; //Un tableau qui contiendra la position des cubes
-        for(int z = 0; z < maxX; z++)
+        for (int z = 0; z < maxX; z++)
         {
-            for(int x = 0; x < maxZ; x++)
+            for (int x = 0; x < maxZ; x++)
             {
                 //bruitAleatoire s'arrange pour que la map generer soit TOUJOURS differentes
-                float y = Mathf.PerlinNoise(x/attenuateur + bruitAleatoire, z/attenuateur + bruitAleatoire); 
+                float y = Mathf.PerlinNoise(x / attenuateur + bruitAleatoire, z / attenuateur + bruitAleatoire);
 
-                float yflood = inondation[z,x]; //L'inondation, permet de savoir si l'ile sera circulaire ou non
-                
+                float yflood = inondation[z, x]; //L'inondation, permet de savoir si l'ile sera circulaire ou non
+
                 // Le terrain est calculer en soustrayant le perlinNoise ainsi que l'inondation, qui a été calculer dans GenererInondationCirculaire
-                terrain[z,x] = Mathf.Clamp01(y-yflood); 
+                terrain[z, x] = Mathf.Clamp01(y - yflood);
             }
         }
         return terrain; //retourne le terrain lorsque la fonction est appeler
@@ -159,22 +161,22 @@ public class GenerateurIles : MonoBehaviour
         int prof = map.GetLength(1); //La map en profondeur
 
         int maximum = biomesMats.Count; //Le nombre de biomes Materiel qu'il y a
-        for(int z= 0; z<prof; z++)
+        for (int z = 0; z < prof; z++)
         {
-            for(int x = 0; x < larg; x++)
+            for (int x = 0; x < larg; x++)
             {
-                float y = map[z,x]; //
+                float y = map[z, x]; //
                 float intensiteAleatoire = Random.Range(0.75f, 1f);
-                if(y>0f)
+                if (y > 0f)
                 {
-                    int quelBiome = Mathf.FloorToInt(map[z,x] * maximum);
+                    int quelBiome = Mathf.FloorToInt(map[z, x] * maximum);
 
                     quelBiome++; //Pour faire en sorte que les biomes soit placer au bons endroits
-                    
+
                     apparaitreDauphin++;
 
                     int rotRandom = Random.Range(0, 4) * 90;
-                    GameObject unCube = Instantiate(cube, new Vector3(x-largeurIle/2 ,y*coefAltitude,z-profondeurIle/2), Quaternion.identity); //Instantie un cube a la position donnee
+                    GameObject unCube = Instantiate(cube, new Vector3(x - largeurIle / 2, y * coefAltitude, z - profondeurIle / 2), Quaternion.identity); //Instantie un cube a la position donnee
 
                     if (Random.Range(1, 1000) >= 999)
                     {
@@ -184,20 +186,20 @@ public class GenerateurIles : MonoBehaviour
                         unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
                         unAgent.transform.localScale = new Vector3(scaleRandomEnnemi, scaleRandomEnnemi, scaleRandomEnnemi);
                     }
-                   
+
                     unCube.GetComponent<BiomesEtatsManager>().biomeMateriel = quelBiome;
                     unCube.GetComponent<BiomesEtatsManager>().perso = perso;
 
                     //Je ne comprend pas comment instancier le dauphin sur 1 biome sur 20, donc je vais les instancier comme ça, je m'en fous
-                    if(apparaitreDauphin == 400)
+                    if (apparaitreDauphin == 1000)
                     {
-                        _unDauphin = Instantiate(dauphin, new Vector3(unCube.transform.position.x, unCube.transform.position.y +2.0f, unCube.transform.position.z), Quaternion.identity);
+                        _unDauphin = Instantiate(dauphin, new Vector3(unCube.transform.position.x, unCube.transform.position.y + 2.0f, unCube.transform.position.z), Quaternion.identity);
                         apparaitreDauphin = 0;
                         _unDauphin.transform.LookAt(perso.transform.position);
                     }
                     unCube.AddComponent<BoxCollider>();
                     unCube.transform.rotation = Quaternion.Euler(0, rotRandom, 0);
-                    
+
                     unCube.transform.parent = gameObject.transform; //Centre l'ile sur son generateur
 
                     //CREATION DE L'OBJECTIF
@@ -217,11 +219,11 @@ public class GenerateurIles : MonoBehaviour
         Texture2D ileTexture = new Texture2D(larg, prof); //Cree un tableau qui contiendrait les informations de position d'une texture
         Color[] couleursTexture = new Color[larg * prof]; //
 
-        for(int z= 0; z<prof; z++)
+        for (int z = 0; z < prof; z++)
         {
-            for(int x = 0; x < larg; x++)
+            for (int x = 0; x < larg; x++)
             {
-                float y = map[z,x];
+                float y = map[z, x];
                 Color couleur = new Color(y, y, y, 1);
                 // (Pour ligne du dessous) pour s'assurer que le tableau passera de 0 a 100 sans jamais sauter une position, 
                 // on doit multiplier le max avec la largeur présente pour s'en assurer

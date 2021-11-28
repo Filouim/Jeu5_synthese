@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3791295210661114590}
   - component: {fileID: 3791295210661114589}
   - component: {fileID: 3791295210661114591}
+  - component: {fileID: 3553931183140527983}
   m_Layer: 0
   m_Name: Ennemi
   m_TagString: Ennemi
@@ -275,6 +276,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesseChasse: 8
   vitessePromenade: 5
+  distanceCible: 5
+--- !u!65 &3553931183140527983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061133306812780418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.66, y: 2.67, z: 7.01}
+  m_Center: {x: -1.08, y: 2.35, z: 0}
 --- !u!1 &4122350434512369695
 GameObject:
   m_ObjectHideFlags: 0
