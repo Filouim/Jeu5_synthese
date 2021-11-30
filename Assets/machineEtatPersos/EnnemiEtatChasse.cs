@@ -32,7 +32,7 @@ public class EnnemiEtatChasse : EnnemiEtatsBase
         }
 
         ennemi.animator.SetBool("isAttacking", true);
-        GameManager.instance.SubirDegats(25f);
+        // GameManager.instance.SubirDegats(25f);
 
         yield return new WaitForSeconds(3f);
 
