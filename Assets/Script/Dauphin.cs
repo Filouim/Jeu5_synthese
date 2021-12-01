@@ -19,6 +19,7 @@ public class Dauphin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_leDauphin.isVisible);
         if(_leDauphin.isVisible)
         {
             _activeDauphin = true;
@@ -42,8 +43,10 @@ public class Dauphin : MonoBehaviour
 
             transform.position = new Vector3(x , _positionDeBase.y + 3f, z);
 
-            Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
-            transform.rotation = rotation;
+            transform.forward = transform.position;
+
+            // Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
+            // transform.rotation = rotation;
             yield return null;
         } while (_activeDauphin);
         yield return null;
