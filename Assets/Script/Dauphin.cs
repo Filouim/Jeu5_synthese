@@ -19,6 +19,7 @@ public class Dauphin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_leDauphin.isVisible);
         if(_leDauphin.isVisible)
         {
             _activeDauphin = true;
