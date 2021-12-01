@@ -10,6 +10,11 @@ public class EnnemiEtatPromenade : EnnemiEtatsBase
         ennemi.animator.SetBool("isWalking", true);
     }
 
+        public override void TriggerEnterEtat(EnnemiEtatsManager ennemi, Collider other)
+    {
+        
+    }
+
     private IEnumerator Anime(EnnemiEtatsManager ennemi)
     {
         // Vitesse de l'agent

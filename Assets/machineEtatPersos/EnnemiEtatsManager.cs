@@ -31,4 +31,9 @@ public class EnnemiEtatsManager : MonoBehaviour
         etatActuel = etat;
         etatActuel.InitEtat(this);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        etatActuel.TriggerEnterEtat(this, other);
+    }
 }

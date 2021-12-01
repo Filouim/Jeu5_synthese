@@ -42,8 +42,10 @@ public class Dauphin : MonoBehaviour
 
             transform.position = new Vector3(x , _positionDeBase.y + 3f, z);
 
-            Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
-            transform.rotation = rotation;
+            transform.forward = transform.position;
+
+            // Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
+            // transform.rotation = rotation;
             yield return null;
         } while (_activeDauphin);
         yield return null;

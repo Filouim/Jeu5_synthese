@@ -11,6 +11,7 @@ public class MovePerso : MonoBehaviour
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
     [SerializeField] private GameObject _tortue;
+    [SerializeField] private GameObject _boxAttaque;
 
     private string moveInputAxis = "Vertical";
     private string turnInputAxis = "Horizontal";
@@ -56,6 +57,19 @@ public class MovePerso : MonoBehaviour
     {
         float moveAxis = Input.GetAxisRaw(moveInputAxis);
         float turnAxis = Input.GetAxisRaw(turnInputAxis);
+
+        //Animation d'attaque du joueur, pas tres efficace
+        float attaqueBouton = Input.GetAxisRaw("Jump");
+
+        if(attaqueBouton > 0)
+        { 
+            animator.SetTrigger("enAttaque");
+            _boxAttaque.SetActive(true);
+        }
+        else 
+        {
+            _boxAttaque.SetActive(false);
+        }
 
         DoInput(turnAxis);
 
