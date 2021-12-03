@@ -16,7 +16,15 @@ public class GameManager : MonoBehaviour
     private float _oxygeneActuel; // Niveau d'oxygene actuel
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
-    private int _completion = 0; //le niveau de completion du joueur
+    private int _completion = 0; //le niveau de completion du joueur 
+
+    [SerializeField] private Image _HpContainer; 
+
+    public Color red => Color.red;  
+
+       public Color white => Color.white; 
+
+    public Color norm => _HpContainer.color;
 
     private static GameManager _instance;
     public static GameManager instance => _instance;
@@ -42,12 +50,19 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         PerdOxygene();
         if (_oxygeneActuel <= 0f)
         {
             GetComponent<ChangerScene>().LoadScene("Defaite");
+        }
+
+        if(_oxygeneActuel < 30){
+
+        _HpContainer.color = LerpRed(5);
+        }else{ 
+            _HpContainer.color = white;
         }
     }
 
@@ -134,5 +149,10 @@ public class GameManager : MonoBehaviour
     public void SetObjectifBarre()
     {
         _sliderObj.value = _completion;
+    } 
+
+    public Color LerpRed(float speed)
+    {
+     return Color.Lerp(white,red,Mathf.Sin(Time.time *speed)); 
     }
 }
