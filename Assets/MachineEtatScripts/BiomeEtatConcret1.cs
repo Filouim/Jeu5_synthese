@@ -8,6 +8,7 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
     private Vector3 _positionBiome;
     private GameObject _unDechet;
     private GameObject _leDechet;
+    private  bool _isPlaying = false; 
 
     public override void InitEtat(BiomesEtatsManager biome)
     {
@@ -44,6 +45,22 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
 
     }
 
+       IEnumerator waitForSound(BiomesEtatsManager biome)
+    {
+        AudioSource nettoyage = biome.GetComponent<AudioSource>();
+        while (_isPlaying == false){
+            nettoyage.Play();
+            yield return new WaitForSeconds(2f);
+            _isPlaying = true;
+        }
+       // {
+
+     //   }
+
+    }
+
+  
+
     public override void TriggerEnterEtat(BiomesEtatsManager biome, Collider other)
     {
         biome.StartCoroutine(changementBiome(biome)); //On demarre la Coroutine changementBiome des que biome (le cube) sent un contact
@@ -58,8 +75,13 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
         laFumee.transform.parent = biome.transform;
 
         laFumee.Play(); //On demarre le systeme de poussiereBiohazard de biomes a l'instant ou le trigger est activer
-        AudioSource nettoyage = biome.GetComponent<AudioSource>();
-        nettoyage.Play();
+
+         biome.StartCoroutine(waitForSound(biome));
+        
+        //AudioSource nettoyage = biome.GetComponent<AudioSource>();
+       // nettoyage.Play();
+
+        
         float t = 0.0f; //On cree une variable qui representera le temps en secondes et qui sera utiliser par une boucle while
 
         yield return new WaitForSeconds(1f); //On attend quelque secondes avant le de commencer la boucle
