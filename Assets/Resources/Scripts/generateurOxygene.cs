@@ -14,8 +14,8 @@ public class generateurOxygene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int chancesBulles = Random.Range(0, 10000);
-        if(chancesBulles >= 9999)
+        int chancesBulles = Random.Range(0, 1000);
+        if(chancesBulles >= 999)
         {
             Instantiate(_bulles, transform.position, Quaternion.identity);
         }
