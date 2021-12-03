@@ -8,6 +8,10 @@ public class EnnemiEtatRepos : EnnemiEtatsBase
     {
         ennemi.StartCoroutine(Anime(ennemi));
     }
+    public override void TriggerEnterEtat(EnnemiEtatsManager ennemi, Collider other)
+    {
+        
+    }
 
     private IEnumerator Anime(EnnemiEtatsManager ennemi)
     {

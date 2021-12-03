@@ -15,7 +15,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -72,12 +73,113 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - 4fcdf950f8d68164abf36777dc096a5a
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: jeu5_blender-_persomodif(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 1.4048758, y: -2.7418714, z: -0.39670625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -41.11744, y: -41.11744, z: -41.11744}
+    - name: Cube.001
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.061690748, y: 1.6665379, z: -0.19453731}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.42533, y: 18.887993, z: 38.42533}
+    - name: Cube.002
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 1.2815751, y: -2.5261672, z: 0.26634973}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 17.426615, y: 15.72513, z: 15.72513}
+    - name: Cube.003
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: -0.4510744, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.004
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: -0.24846618, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.005
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: -0.056098755, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.008
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.118421845, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.007
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.32103008, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.006
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.5133975, y: 3.092583, z: 0.41938698}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.015
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.20161182, y: 2.0038812, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.016
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.036848366, y: 2.0038812, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Cube.017
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: -0.14405674, y: 2.0038812, z: 0.09036972}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.0673714, y: 6.0673714, z: 6.0673714}
+    - name: Circle.001
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.26441985, y: 2.7373803, z: 0.3055903}
+      rotation: {x: -0.035229586, y: 0, z: -0, w: 0.9993793}
+      scale: {x: 33.744606, y: 33.74461, z: 33.74461}
+    - name: Cube.011
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.0675941, y: 2.647919, z: 0.3230146}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -32.524227, y: -4.120927, z: -4.9824533}
+    - name: Cylinder.001
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 5.770184, y: 1.5441886, z: -7.490231}
+      rotation: {x: -0.5300383, y: -0.46803787, z: 0.46803784, w: 0.53003824}
+      scale: {x: 99.99999, y: 100, z: 99.99999}
+    - name: Circle.003
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.22330587, y: 3.1939616, z: -1.2389691}
+      rotation: {x: -0.035229586, y: 0, z: -0, w: 0.9993793}
+      scale: {x: 33.744606, y: 33.74461, z: 33.74461}
+    - name: Cube.009
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 0.026480138, y: 3.1045003, z: -1.2215447}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -32.524227, y: -4.120927, z: -4.9824533}
+    - name: Cylinder.002
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: 3.9393532, y: 4.299167, z: -7.490231}
+      rotation: {x: 0.3796834, y: 0.5965237, z: -0.5965237, w: -0.37968335}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Empty
+      parentName: jeu5_blender-_persomodif(Clone)
+      position: {x: -16.689287, y: 23.387115, z: -1.1649384}
+      rotation: {x: 0.00017725345, y: 0.025487505, z: 0.00695124, w: 0.99965096}
+      scale: {x: 99.99999, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

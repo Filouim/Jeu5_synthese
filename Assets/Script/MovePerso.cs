@@ -11,6 +11,7 @@ public class MovePerso : MonoBehaviour
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
     [SerializeField] private GameObject _tortue;
+    [SerializeField] private GameObject _boxAttaque;
 
     private string moveInputAxis = "Vertical";
     private string turnInputAxis = "Horizontal";
@@ -57,6 +58,14 @@ public class MovePerso : MonoBehaviour
         float moveAxis = Input.GetAxisRaw(moveInputAxis);
         float turnAxis = Input.GetAxisRaw(turnInputAxis);
 
+        //Animation d'attaque du joueur, pas tres efficace
+        float attaqueBouton = Input.GetAxisRaw("Jump");
+
+        if (attaqueBouton > 0)
+        {
+            StartCoroutine(BoiteDureeVie());
+        }
+
         DoInput(turnAxis);
 
         animator.SetBool("enCourse", moveAxis != 0); //permet de changer l'animation du personnage vers la course en verifiant la vitesse du personnage en changeant le bool
@@ -70,6 +79,25 @@ public class MovePerso : MonoBehaviour
         }
 
         // DeplacementDeLaTortue();
+    }
+
+    private IEnumerator BoiteDureeVie()
+    {
+        Debug.Log("ATTACK");
+        animator.SetBool("enAttaque", true);
+        _boxAttaque.SetActive(true);
+        float t = 0.0f;
+        do
+        {
+            t += Time.deltaTime;
+            if(t>=1.0f)
+            {
+                _boxAttaque.SetActive(false);
+                animator.SetBool("enAttaque", false);
+            }
+            yield return null;
+        } while(t <= 1.0f);
+        yield return null;
     }
 
     //Permet de faire reapparaitre le joueur au dessus de l'ile en plein milieu
@@ -110,9 +138,14 @@ public class MovePerso : MonoBehaviour
         if (other.tag == "Ennemi")
         {
             Debug.Log("L'ennemi a touché le joueur!");
-            if (!estInvincible) StartCoroutine(Invincible());
+            //  if (!estInvincible) StartCoroutine(Invincible()); à
+            _gameManager.SubirDegats(10f);
         }
     }
+
+
+
+
 
     private IEnumerator Invincible()
     {

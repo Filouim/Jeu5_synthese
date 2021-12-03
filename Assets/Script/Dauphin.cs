@@ -19,11 +19,13 @@ public class Dauphin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_leDauphin.isVisible)
+
+        if (_leDauphin.isVisible)
         {
             _activeDauphin = true;
             StartCoroutine(DauphinBouge());
-        } else 
+        }
+        else
         {
             _activeDauphin = false;
             StopCoroutine(DauphinBouge());
@@ -40,10 +42,12 @@ public class Dauphin : MonoBehaviour
             float x = (Mathf.Cos(t) * 5) + _positionDeBase.x;
             float z = (Mathf.Sin(t) * 5) + _positionDeBase.z;
 
-            transform.position = new Vector3(x , _positionDeBase.y + 3f, z);
+            transform.position = new Vector3(x, _positionDeBase.y + 3f, z);
 
-            Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
-            transform.rotation = rotation;
+            transform.forward = transform.position;
+
+            // Quaternion rotation = Quaternion.LookRotation(_positionDeBase);
+            // transform.rotation = rotation;
             yield return null;
         } while (_activeDauphin);
         yield return null;
