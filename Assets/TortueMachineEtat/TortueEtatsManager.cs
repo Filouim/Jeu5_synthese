@@ -10,7 +10,7 @@ public class TortueEtatsManager : MonoBehaviour
             public TortueEtatAttend attend = new TortueEtatAttend();
 
             public float vitesse = 15f;
-            public float distanceCible = 5f;
+            public float distanceCible = 25f;
 
             public GameObject cible { get; set; }
             public Transform origine { get; set; }

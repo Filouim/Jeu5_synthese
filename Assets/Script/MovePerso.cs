@@ -37,6 +37,7 @@ public class MovePerso : MonoBehaviour
     private Vector3 velocity;
     Animator animator;
     CharacterController controller;
+    private Vector3 _tailleChamp;
     // Start is called before the first frame update
     void Awake()
     {
@@ -68,10 +69,21 @@ public class MovePerso : MonoBehaviour
 
         //Animation d'attaque du joueur, pas tres efficace
         float attaqueBouton = Input.GetAxisRaw("Jump");
+        //Bouton pour augmenter la taille du champ de force (momentanement)
+        bool boutonLavage = Input.GetKey(KeyCode.E);
 
         if (attaqueBouton > 0)
         {
             StartCoroutine(BoiteDureeVie());
+        }
+
+        if(boutonLavage)
+        {
+            StartCoroutine(ChampGrossi(boutonLavage));
+        }
+        else
+        {
+            StopCoroutine(ChampGrossi(boutonLavage));
         }
 
         DoInput(turnAxis);
@@ -91,7 +103,6 @@ public class MovePerso : MonoBehaviour
 
     private IEnumerator BoiteDureeVie()
     {
-        Debug.Log("ATTACK");
         animator.SetBool("enAttaque", true);
         _boxAttaque.SetActive(true);
         float t = 0.0f;
@@ -105,6 +116,22 @@ public class MovePerso : MonoBehaviour
             }
             yield return null;
         } while(t <= 1.0f);
+        yield return null;
+    }
+
+    //Permet d'augmenter la taille du champ de force, ce qui permet de laver plus de tarrain, plus vite
+    private IEnumerator ChampGrossi(bool bouton)
+    {
+        float t = 0.0f;
+        do
+        {
+            t += Time.deltaTime;
+            _force.transform.localScale = new Vector3(10.0f * t, 10.0f * t, 10.0f * t);
+            _tailleChamp = _force.transform.localScale;
+            yield return null;
+        } while (t <= 5.0f);
+        _force.transform.localScale = new Vector3(0f,0f,0f);
+        _tailleChamp = _force.transform.localScale;
         yield return null;
     }
 
@@ -195,7 +222,7 @@ public class MovePerso : MonoBehaviour
                 break;
 
             default:
-                _force.transform.localScale = new Vector3(0, 0, 0);
+                _force.transform.localScale = _tailleChamp;
                 break;
 
         }
