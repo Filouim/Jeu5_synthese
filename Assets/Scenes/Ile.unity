@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesseMouvement: 15
   impulsionSaut: 0
-  tempsInvincible: 3
+  tempsInvincible: 5
   gravite: -10
   _force: {fileID: 349048948}
   _vision: {fileID: 963194227}
@@ -602,6 +602,7 @@ MonoBehaviour:
   rotation: 360
   _currentGameObject: {fileID: 498405908}
   _marche: {fileID: 0}
+  estInvincible: 0
 --- !u!143 &498405912
 CharacterController:
   m_ObjectHideFlags: 0
