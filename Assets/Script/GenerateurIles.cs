@@ -178,7 +178,7 @@ public class GenerateurIles : MonoBehaviour
                     int rotRandom = Random.Range(0, 4) * 90;
                     GameObject unCube = Instantiate(cube, new Vector3(x - largeurIle / 2, y * coefAltitude, z - profondeurIle / 2), Quaternion.identity); //Instantie un cube a la position donnee
 
-                    if (Random.Range(1, 1000) >= 999)
+                    if (Random.Range(1, 2000) >= 1999)
                     {
                         float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
                         GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);

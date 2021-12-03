@@ -61,14 +61,9 @@ public class MovePerso : MonoBehaviour
         //Animation d'attaque du joueur, pas tres efficace
         float attaqueBouton = Input.GetAxisRaw("Jump");
 
-        if(attaqueBouton > 0)
-        { 
-            animator.SetTrigger("enAttaque");
-            _boxAttaque.SetActive(true);
-        }
-        else 
+        if (attaqueBouton > 0)
         {
-            _boxAttaque.SetActive(false);
+            StartCoroutine(BoiteDureeVie());
         }
 
         DoInput(turnAxis);
@@ -84,6 +79,25 @@ public class MovePerso : MonoBehaviour
         }
 
         // DeplacementDeLaTortue();
+    }
+
+    private IEnumerator BoiteDureeVie()
+    {
+        Debug.Log("ATTACK");
+        animator.SetBool("enAttaque", true);
+        _boxAttaque.SetActive(true);
+        float t = 0.0f;
+        do
+        {
+            t += Time.deltaTime;
+            if(t>=1.0f)
+            {
+                _boxAttaque.SetActive(false);
+                animator.SetBool("enAttaque", false);
+            }
+            yield return null;
+        } while(t <= 1.0f);
+        yield return null;
     }
 
     //Permet de faire reapparaitre le joueur au dessus de l'ile en plein milieu
@@ -124,9 +138,14 @@ public class MovePerso : MonoBehaviour
         if (other.tag == "Ennemi")
         {
             Debug.Log("L'ennemi a touché le joueur!");
-            if (!estInvincible) StartCoroutine(Invincible());
+            //  if (!estInvincible) StartCoroutine(Invincible()); à
+            _gameManager.SubirDegats(10f);
         }
     }
+
+
+
+
 
     private IEnumerator Invincible()
     {
