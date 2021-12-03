@@ -61,12 +61,12 @@ public class MovePerso : MonoBehaviour
         //Animation d'attaque du joueur, pas tres efficace
         float attaqueBouton = Input.GetAxisRaw("Jump");
 
-        if(attaqueBouton > 0)
-        { 
+        if (attaqueBouton > 0)
+        {
             animator.SetTrigger("enAttaque");
             _boxAttaque.SetActive(true);
         }
-        else 
+        else
         {
             _boxAttaque.SetActive(false);
         }
@@ -124,9 +124,14 @@ public class MovePerso : MonoBehaviour
         if (other.tag == "Ennemi")
         {
             Debug.Log("L'ennemi a touché le joueur!");
-            if (!estInvincible) StartCoroutine(Invincible());
+            //  if (!estInvincible) StartCoroutine(Invincible()); à
+            _gameManager.SubirDegats(10f);
         }
     }
+
+
+
+
 
     private IEnumerator Invincible()
     {
