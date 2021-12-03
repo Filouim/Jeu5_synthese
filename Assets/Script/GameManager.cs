@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Slider _slider; // Valeur de la barre d'oxygene
+   
+    [SerializeField] private FlashImage _flashImage = null;
     [SerializeField] private Slider _sliderObj; //Valeur de l'objectif
     [SerializeField] private Text _txtPointage; // Champ texte du pointage
     [SerializeField] private float _maxOxygene = 100f; // Niveau d'oxygene maximum
     [SerializeField] private float _delaiPerteOxygene = 1f; // Frequence a laquelle le joueur perd de l'oxygene
 
-    private float _oxygeneActuel; // Niveau d'oxygene actuel
+    public static float _oxygeneActuel; // Niveau d'oxygene actuel
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
     private int _completion = 0; //le niveau de completion du joueur
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         PerdOxygene();
+
         if (_oxygeneActuel <= 0f)
         {
             GetComponent<ChangerScene>().LoadScene("Defaite");
