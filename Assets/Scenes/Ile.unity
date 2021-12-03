@@ -1129,6 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270ce18bf0fc4fc4b9174b356a821d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vitesseRotCam: 5
   _player: {fileID: 498405909}
   cameraPeutTourner: 1
 --- !u!1 &980550568
