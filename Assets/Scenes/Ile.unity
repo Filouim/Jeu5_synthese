@@ -597,7 +597,7 @@ MonoBehaviour:
   gravite: -10
   _force: {fileID: 349048948}
   _vision: {fileID: 963194227}
-  _tortue: {fileID: 2056300253}
+  _tortue: {fileID: 0}
   _boxAttaque: {fileID: 1502981837}
   rotation: 360
   _currentGameObject: {fileID: 498405908}
@@ -1049,6 +1049,7 @@ MonoBehaviour:
   coefAltitude: 6
   dauphin: {fileID: 2723583717456439994, guid: fcc350ec4a01e0a4db9575ee1085eec0, type: 3}
   perso: {fileID: 498405909}
+  tortue: {fileID: 890766163977794176, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
   tailleEnnemiMin: 0.4
   tailleEnnemiMax: 0.75
   pasExplorer: {fileID: 2100000, guid: a835fa152af37b44dab2bc063141dc7b, type: 2}
@@ -1893,7 +1894,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 498405908}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1502981839
 BoxCollider:
@@ -2133,6 +2134,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_TargetGraphic: {fileID: 0}
 --- !u!1001 &2056300252
 PrefabInstance:
   m_ObjectHideFlags: 0
