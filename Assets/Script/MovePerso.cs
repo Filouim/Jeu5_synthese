@@ -139,7 +139,8 @@ public class MovePerso : MonoBehaviour
         {
             Debug.Log("L'ennemi a touché le joueur!");
             //  if (!estInvincible) StartCoroutine(Invincible()); à
-            _gameManager.SubirDegats(10f);
+            _gameManager.SubirDegats(10f); 
+            Debug.Log("kek69");
         }
     }
 
