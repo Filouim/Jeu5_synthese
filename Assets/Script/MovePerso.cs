@@ -6,7 +6,7 @@ public class MovePerso : MonoBehaviour
     [SerializeField] private float vitesseMouvement = 20.0f;
 
     [SerializeField] private float impulsionSaut = 30.0f;
-    [SerializeField] private float tempsInvincible = 3f;
+    [SerializeField] private float tempsInvincible = 5f;
     [SerializeField] private float gravite = 0.2f;
     [SerializeField] private GameObject _force;
     [SerializeField] private Camera _vision;
@@ -29,7 +29,7 @@ public class MovePerso : MonoBehaviour
 
 
 
-    private bool estInvincible = false;
+    public bool estInvincible = false;
 
     private static MovePerso _instance;
     public static MovePerso instance => _instance;
@@ -44,7 +44,15 @@ public class MovePerso : MonoBehaviour
         _marche = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        // ApparaitreTortue();
+        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
     void Start()
@@ -138,14 +146,13 @@ public class MovePerso : MonoBehaviour
         if (other.tag == "Ennemi")
         {
             Debug.Log("L'ennemi a touché le joueur!");
-            //  if (!estInvincible) StartCoroutine(Invincible()); à
-            _gameManager.SubirDegats(10f);
+            if (!estInvincible)
+            {
+                StartCoroutine(Invincible());
+                _gameManager.SubirDegats(10f);
+            }
         }
     }
-
-
-
-
 
     private IEnumerator Invincible()
     {

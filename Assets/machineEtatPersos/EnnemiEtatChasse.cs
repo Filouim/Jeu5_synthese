@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class EnnemiEtatChasse : EnnemiEtatsBase
 {
-    private MovePerso perso;
-    private Coroutine _stop;
-
     public override void InitEtat(EnnemiEtatsManager ennemi)
     {
-        _stop = ennemi.StartCoroutine(Anime(ennemi));
         ennemi.animator.SetBool("isRunning", true);
+        ennemi.StartCoroutine(Anime(ennemi));
     }
 
     public override void TriggerEnterEtat(EnnemiEtatsManager ennemi, Collider other)
     {
-        if(other.tag == "Attaque")
-        {
-            ennemi.StopCoroutine(_stop);
-            ennemi.ChangerEtat(ennemi.promenade);
-        }
+        
     }
 
     private IEnumerator Anime(EnnemiEtatsManager ennemi)
@@ -37,18 +30,22 @@ public class EnnemiEtatChasse : EnnemiEtatsBase
             // Ajuste la destination sur la position de la cible
             ennemi.agent.destination = ennemi.cible.transform.position;
 
+            if (MovePerso.instance.estInvincible)
+            {
+                ennemi.animator.SetBool("isRunning", false);
+                ennemi.ChangerEtat(ennemi.promenade);
+            }
+
             // Met a jour toutes les 0.2 secondes
             yield return new WaitForSeconds(0.2f);
         }
 
         ennemi.animator.SetBool("isAttacking", true);
-        // GameManager.instance.SubirDegats(25f);
-        yield return new WaitForSeconds(3f);
-
         ennemi.animator.SetBool("isRunning", false);
+
+        yield return new WaitForSeconds(1f);
+
         ennemi.animator.SetBool("isAttacking", false);
         ennemi.ChangerEtat(ennemi.promenade);
     }
-
-
 }
