@@ -19,6 +19,5 @@ public class generateurOxygene : MonoBehaviour
         {
             Instantiate(_bulles, transform.position, Quaternion.identity);
         }
-        _bulles.transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
     }
 }
