@@ -14,6 +14,7 @@ public class GenerateurIles : MonoBehaviour
     public int coefAltitude = 6;
     public GameObject dauphin;
     public GameObject perso;
+    public GameObject tortue; //#tim Thomas
     public float tailleEnnemiMin = 0.4f;
     public float tailleEnnemiMax = .75f;
 
@@ -33,12 +34,20 @@ public class GenerateurIles : MonoBehaviour
         GenererListeNaterielsBiomes();
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
-
+        ApparaitreTortueEtIntelligence();
     }
 
     void Update()
     {
         _unDauphin.transform.LookAt(perso.transform.position);
+    }
+
+    void ApparaitreTortueEtIntelligence()
+    {
+        GameObject laTortue = Instantiate(tortue, new Vector3(0, 3f, 0), Quaternion.identity);
+        Debug.Log(laTortue);
+        laTortue.GetComponent<TortueEtatsManager>().cible = perso;
+        laTortue.GetComponent<TortueEtatsManager>().origine = perso.transform;
     }
 
     //THOMAS ST-PIERRE Genere une liste de biomes selon le dossier Resources
@@ -178,7 +187,7 @@ public class GenerateurIles : MonoBehaviour
                     int rotRandom = Random.Range(0, 4) * 90;
                     GameObject unCube = Instantiate(cube, new Vector3(x - largeurIle / 2, y * coefAltitude, z - profondeurIle / 2), Quaternion.identity); //Instantie un cube a la position donnee
 
-                    if (Random.Range(1, 1000) >= 999)
+                    if (Random.Range(1, 2000) >= 1999)
                     {
                         float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
                         GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);

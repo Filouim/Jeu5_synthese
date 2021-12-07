@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     // Start is called before the first frame update 
 
+    [SerializeField] private float _vitesseRotCam = 5f;
     [SerializeField] private GameObject _player;
 
     private Vector3 _offset;
@@ -21,7 +22,7 @@ public class CameraFollow : MonoBehaviour
     {
         if(cameraPeutTourner)
         {
-            Quaternion camTourne = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * 1f, Vector3.up);
+            Quaternion camTourne = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _vitesseRotCam, Vector3.up);
             _offset = camTourne * _offset;
         }
         transform.position = _player.transform.position + _offset;
