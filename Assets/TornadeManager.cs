@@ -23,7 +23,7 @@ public class TornadeManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (tornade != null && tornade.remainingDistance <= tornade.stoppingDistance)
         {
