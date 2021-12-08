@@ -47,6 +47,15 @@ public class TornadeManager : MonoBehaviour
     }
 
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.transform.position = tornade.transform.position;
+        }
+    }
+
+
 
 
 }
