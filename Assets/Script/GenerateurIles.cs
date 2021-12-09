@@ -14,6 +14,7 @@ public class GenerateurIles : MonoBehaviour
     public int coefAltitude = 6;
     public GameObject dauphin;
     public GameObject perso;
+    public GameObject tortue; //#tim Thomas
     public float tailleEnnemiMin = 0.4f;
     public float tailleEnnemiMax = .75f;
 
@@ -33,12 +34,20 @@ public class GenerateurIles : MonoBehaviour
         GenererListeNaterielsBiomes();
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
-
+        ApparaitreTortueEtIntelligence();
     }
 
     void Update()
     {
         _unDauphin.transform.LookAt(perso.transform.position);
+    }
+
+    void ApparaitreTortueEtIntelligence()
+    {
+        GameObject laTortue = Instantiate(tortue, new Vector3(0, 3f, 0), Quaternion.identity);
+        Debug.Log(laTortue);
+        laTortue.GetComponent<TortueEtatsManager>().cible = perso;
+        laTortue.GetComponent<TortueEtatsManager>().origine = perso.transform;
     }
 
     //THOMAS ST-PIERRE Genere une liste de biomes selon le dossier Resources

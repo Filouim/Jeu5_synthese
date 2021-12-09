@@ -6,8 +6,8 @@ public class EnnemiEtatPromenade : EnnemiEtatsBase
 {
     public override void InitEtat(EnnemiEtatsManager ennemi)
     {
-        ennemi.StartCoroutine(Anime(ennemi));
         ennemi.animator.SetBool("isWalking", true);
+        ennemi.StartCoroutine(Anime(ennemi));
     }
 
         public override void TriggerEnterEtat(EnnemiEtatsManager ennemi, Collider other)
