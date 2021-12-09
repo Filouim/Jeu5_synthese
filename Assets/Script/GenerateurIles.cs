@@ -34,7 +34,7 @@ public class GenerateurIles : MonoBehaviour
         GenererListeNaterielsBiomes();
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
-        ApparaitreTortueEtIntelligence();
+        // ApparaitreTortueEtIntelligence();
     }
 
     void Update()
@@ -42,13 +42,13 @@ public class GenerateurIles : MonoBehaviour
         _unDauphin.transform.LookAt(perso.transform.position);
     }
 
-    void ApparaitreTortueEtIntelligence()
-    {
-        GameObject laTortue = Instantiate(tortue, new Vector3(0, 3f, 0), Quaternion.identity);
-        Debug.Log(laTortue);
-        laTortue.GetComponent<TortueEtatsManager>().cible = perso;
-        laTortue.GetComponent<TortueEtatsManager>().origine = perso.transform;
-    }
+    // void ApparaitreTortueEtIntelligence()
+    // {
+    //     GameObject laTortue = Instantiate(tortue, new Vector3(0, 3f, 0), Quaternion.identity);
+    //     Debug.Log(laTortue);
+    //     laTortue.GetComponent<TortueEtatsManager>().cible = perso;
+    //     laTortue.GetComponent<TortueEtatsManager>().origine = perso.transform;
+    // }
 
     //THOMAS ST-PIERRE Genere une liste de biomes selon le dossier Resources
     void GenererListeNaterielsBiomes()
