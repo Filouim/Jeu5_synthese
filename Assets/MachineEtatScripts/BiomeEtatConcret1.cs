@@ -18,8 +18,12 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
                 break;
             case 1:
                 _unDechet = Resources.Load("Items/colonneI") as GameObject;
+                break; 
+
+                    case 2 :
+                _unDechet = Resources.Load("Items/bouteille") as GameObject;
                 break;
-            // case 2 : 
+            // case 3 : 
             //     _unDechet = Resources.Load() as GameObject;
             default:
                 break;
