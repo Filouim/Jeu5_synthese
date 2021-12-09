@@ -9,12 +9,27 @@ public class TornadeManager : MonoBehaviour
 {
     public NavMeshAgent tornade;
 
+    public GameObject player;
+
     [Range(0, 100)] public float speed;
 
     [Range(1, 500)] public float radius;
 
+    private bool collided;
+
+    private bool _in;
+
+    public CharacterController controller;
+
+    public Rigidbody rb;
+
+    private GameManager _gameManager;
+
     void Start()
     {
+        rb.isKinematic = true;
+        _gameManager = GameManager.instance;
+
         tornade = GetComponent<NavMeshAgent>();
         if (tornade != null)
         {
@@ -28,6 +43,12 @@ public class TornadeManager : MonoBehaviour
         if (tornade != null && tornade.remainingDistance <= tornade.stoppingDistance)
         {
             tornade.SetDestination(RandomLoc());
+        }
+
+        if (collided)
+        {
+
+            StartCoroutine(PersoRoutine());
         }
     }
 
@@ -51,8 +72,56 @@ public class TornadeManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = tornade.transform.position;
+            collided = true;
+            _in = true;
+            _gameManager.SubirDegats(20f);
         }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    private IEnumerator PersoRoutine()
+    {
+
+
+        if (_in)
+        {
+            player.transform.position = new Vector3(transform.position.x, 9, transform.position.z);
+
+
+        }
+        controller.enabled = false;
+        rb.isKinematic = false;
+
+        player.transform.Rotate(0, 30, 0);
+
+        yield return new WaitForSeconds(1f);
+
+        _in = false;
+
+        yield return new WaitForSeconds(0.1f);
+        if (!_in)
+        {
+
+            rb.AddForce(transform.up * 0.6f, ForceMode.Impulse);
+        }
+
+        yield return new WaitForSeconds(2f);
+        rb.isKinematic = true;
+        collided = false;
+        controller.enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
+
     }
 
 
