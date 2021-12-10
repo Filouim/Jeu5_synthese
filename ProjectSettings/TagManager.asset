@@ -7,6 +7,7 @@ TagManager:
   - Ennemi
   - champDeForce
   - Attaque
+  - champTornade
   layers:
   - Default
   - TransparentFX
