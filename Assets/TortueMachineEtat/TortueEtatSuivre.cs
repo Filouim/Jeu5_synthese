@@ -15,7 +15,9 @@ public class TortueEtatSuivre : TortueEtatsBase
             {
                         //vitesse tortue
                         tortue.agent.speed = tortue.vitesse;
+
                         //Trouve le perso et le suit
+                        Debug.Log(tortue.cible);
                         tortue.agent.destination = tortue.cible.transform.position; 
 
                         do

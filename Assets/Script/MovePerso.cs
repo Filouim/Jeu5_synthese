@@ -166,7 +166,7 @@ public class MovePerso : MonoBehaviour
     {
         if (other.tag == "Ennemi")
         {
-            if (!estInvincible)
+            if (!_gameManager._invincible)
             {
                 StartCoroutine(Invincible());
                 _gameManager.SubirDegats(10f);

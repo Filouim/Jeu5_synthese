@@ -11,11 +11,22 @@ public class CharacterSwapper : MonoBehaviour
     public List<Transform> persoEtTortue;
     public int iChooseU;
 
+    private MovePerso _scriptScaphandre;
+    private TortueScript _scriptTortue;
+    private NavMeshAgent _navMesh;
+    private CharacterController _tortueController;
+    private CharacterController _persoController;
+
     private CameraFollow _instance;
     // Start is called before the first frame update
     void Start()
     {
         _instance = CameraFollow.instance;
+        _scriptScaphandre = persoEtTortue[0].GetComponent<MovePerso>();
+        _persoController = persoEtTortue[0].GetComponent<CharacterController>();
+        _scriptTortue = persoEtTortue[1].GetComponent<TortueScript>();
+        _navMesh = persoEtTortue[1].GetComponent<NavMeshAgent>();
+        _tortueController = persoEtTortue[1].GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -38,28 +49,32 @@ public class CharacterSwapper : MonoBehaviour
     private void Swap()
     {
         persoControllable = persoEtTortue[iChooseU];
-        persoControllable.GetComponent<CharacterController>().enabled = true;
-        persoControllable.GetComponent<MovePerso>().enabled = true;
-        Debug.Log(persoControllable.GetComponent<NavMeshAgent>());
-        if(persoControllable.GetComponent<NavMeshAgent>() != null)
+        //Active les bons components
+        if(persoControllable == persoEtTortue[0])
         {
-            persoControllable.GetComponent<NavMeshAgent>().enabled = false;
+            _scriptScaphandre.enabled = true;
+            _persoController.enabled = true;
+        }
+        else
+        {
+            _tortueController.enabled = true;
+            _scriptTortue.enabled = true;
+            _navMesh.enabled = false;
         }
         _instance.SwitchCamera();
 
-        for(int i = 0; i < persoEtTortue.Count; i++)
+
+        //Desactive les bons components
+        if(persoControllable == persoEtTortue[0])
         {
-            if(persoEtTortue[i] != persoControllable)
-            {
-                Debug.Log(persoControllable);
-                Debug.Log(persoEtTortue[i]);
-                persoEtTortue[i].GetComponent<CharacterController>().enabled = false;
-                persoEtTortue[i].GetComponent<MovePerso>().enabled = false;
-                if(persoEtTortue[i].GetComponent<NavMeshAgent>() != null)
-                {
-                    persoEtTortue[i].GetComponent<NavMeshAgent>().enabled = true;
-                }
-            }
+            _tortueController.enabled = false;
+            _scriptTortue.enabled = false;
+            _navMesh.enabled = true;
+        }
+        else
+        {
+            _persoController.enabled = false;
+            _scriptScaphandre.enabled = false;
         }
     }
 }
