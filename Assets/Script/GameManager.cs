@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
     private int _completion = 0; //le niveau de completion du joueur 
+    public bool _invincible;
 
     [SerializeField] private Image _HpContainer; 
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
     public static GameManager instance => _instance;
+
 
     // Singleton
     void Awake()
@@ -151,8 +153,14 @@ public class GameManager : MonoBehaviour
         _sliderObj.value = _completion;
     } 
 
+    //Gere l'invincibilite au lieu de MovePerso. I know
+    public void GetInvincibilite(bool invin)
+    {
+        _invincible = invin;
+    }
+
     public Color LerpRed(float speed)
     {
-     return Color.Lerp(white,red,Mathf.Sin(Time.time *speed)); 
+        return Color.Lerp(white,red,Mathf.Sin(Time.time *speed)); 
     }
 }

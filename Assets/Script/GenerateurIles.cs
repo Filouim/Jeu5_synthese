@@ -192,6 +192,7 @@ public class GenerateurIles : MonoBehaviour
                         float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
                         GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);
                         unAgent.GetComponent<EnnemiEtatsManager>().cible = perso;
+                        Debug.Log(perso);
                         unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
                         unAgent.transform.localScale = new Vector3(scaleRandomEnnemi, scaleRandomEnnemi, scaleRandomEnnemi);
                     }

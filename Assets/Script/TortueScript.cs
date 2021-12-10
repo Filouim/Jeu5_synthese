@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class TortueScript : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class TortueScript : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<TortueEtatsManager>().cible = _player;
-        gameObject.GetComponent<TortueEtatsManager>().origine = _player.transform;
+        Invoke("ActiverNavMesh", 2f);
     }
 
-    void LateUpdate()
+    void ActiverNavMesh()
     {
-        
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        gameObject.GetComponent<TortueEtatsManager>().cible = _player;
+        gameObject.GetComponent<TortueEtatsManager>().origine = _player.transform;
     }
 
 }

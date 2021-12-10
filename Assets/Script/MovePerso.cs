@@ -15,11 +15,7 @@ public class MovePerso : MonoBehaviour
 
     private string moveInputAxis = "Vertical";
     private string turnInputAxis = "Horizontal";
-
     [SerializeField] private float rotation = 360;
-
-
-
     [SerializeField] private Transform _currentGameObject;
 
     public AudioSource _marche;
@@ -46,14 +42,14 @@ public class MovePerso : MonoBehaviour
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        // if (_instance != null && _instance != this)
+        // {
+        //     Destroy(this.gameObject);
+        // }
+        // else
+        // {
+        //     _instance = this;
+        // }
     }
 
     void Start()
@@ -168,11 +164,8 @@ public class MovePerso : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Une collision à été détecté!");
-        Debug.Log(other.tag);
         if (other.tag == "Ennemi")
         {
-            Debug.Log("L'ennemi a touché le joueur!");
             if (!estInvincible)
             {
                 StartCoroutine(Invincible());
@@ -183,13 +176,13 @@ public class MovePerso : MonoBehaviour
 
     private IEnumerator Invincible()
     {
-        estInvincible = true;
-        Debug.Log("Je suis invincible!");
+        // estInvincible = true;
+        _gameManager.GetInvincibilite(true);
 
         yield return new WaitForSeconds(tempsInvincible);
 
-        estInvincible = false;
-        Debug.Log("Je ne suis plus Superman!");
+        // estInvincible = false;
+        _gameManager.GetInvincibilite(false);
     }
 
 
