@@ -26,13 +26,16 @@ public class Bulles : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        MeshRenderer meshBulle = GetComponent<MeshRenderer>();
+
         if(other.tag == "Player")
         {
             _particulesBulle.Play();
             _gameManager.AjouterOxygene(25f);
             _bullesPrise.Play();
+            meshBulle.enabled = false;
             Debug.Log("He touched me");
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 3f);
         }
     }
 }
