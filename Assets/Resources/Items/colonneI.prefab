@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationMax: 360
   _rotationMin: 180
+  _tornade: {fileID: 6833840587945322698, guid: 6c856ce8692bb5c4b90c8be35e5ca0d6, type: 3}
 --- !u!1 &8434124330534715299
 GameObject:
   m_ObjectHideFlags: 0
