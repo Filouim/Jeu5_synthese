@@ -13,9 +13,12 @@ public class CharacterSwapper : MonoBehaviour
 
     private MovePerso _scriptScaphandre;
     private TortueScript _scriptTortue;
+    private TortueEtatsManager managerTortue;
     private NavMeshAgent _navMesh;
     private CharacterController _tortueController;
     private CharacterController _persoController;
+
+    // private EnnemiEtatsManager
 
     private CameraFollow _instance;
     // Start is called before the first frame update
@@ -27,6 +30,7 @@ public class CharacterSwapper : MonoBehaviour
         _scriptTortue = persoEtTortue[1].GetComponent<TortueScript>();
         _navMesh = persoEtTortue[1].GetComponent<NavMeshAgent>();
         _tortueController = persoEtTortue[1].GetComponent<CharacterController>();
+        managerTortue = persoEtTortue[1].GetComponent<TortueEtatsManager>();
     }
 
     // Update is called once per frame
@@ -49,7 +53,7 @@ public class CharacterSwapper : MonoBehaviour
     private void Swap()
     {
         persoControllable = persoEtTortue[iChooseU];
-        //Active les bons components
+        //Active et desactive les bons components
         if(persoControllable == persoEtTortue[0])
         {
             _scriptScaphandre.enabled = true;
@@ -59,7 +63,7 @@ public class CharacterSwapper : MonoBehaviour
         {
             _tortueController.enabled = true;
             _scriptTortue.enabled = true;
-            _navMesh.enabled = false;
+            managerTortue.ChangerEtat(managerTortue.sousMonControle);
         }
         _instance.SwitchCamera();
 
@@ -69,7 +73,7 @@ public class CharacterSwapper : MonoBehaviour
         {
             _tortueController.enabled = false;
             _scriptTortue.enabled = false;
-            _navMesh.enabled = true;
+            managerTortue.ChangerEtat(managerTortue.suit);
         }
         else
         {
