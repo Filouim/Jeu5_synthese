@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 602050695}
   - component: {fileID: 602050694}
   m_Layer: 5
-  m_Name: btnRecommencer
+  m_Name: btnSuivant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 175779949}
         m_TargetAssemblyTypeName: ChangerScene, Assembly-CSharp
-        m_MethodName: LoadPreviousScene
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -685,7 +685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Meilleure chance la prochaine fois...
+  m_Text: Voyons voir quelle sera votre prochaine mission...
 --- !u!222 &1123737726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Recommencer
+  m_Text: Niveau suivant
 --- !u!222 &1306857516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Dommage!
+  m_Text: "Bien jou\xE9!"
 --- !u!222 &1935707651
 CanvasRenderer:
   m_ObjectHideFlags: 0
