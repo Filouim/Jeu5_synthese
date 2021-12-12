@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class TornadeManager : MonoBehaviour
 {
     public NavMeshAgent tornade;
-
+    private AudioSource _source;
     public GameObject player;
 
     [Range(0, 100)] public float speed;
@@ -27,6 +27,8 @@ public class TornadeManager : MonoBehaviour
 
     void Start()
     {
+
+        _source = GetComponent<AudioSource>();
         rb.isKinematic = true;
         _gameManager = GameManager.instance;
 
@@ -75,6 +77,10 @@ public class TornadeManager : MonoBehaviour
             collided = true;
             _in = true;
             _gameManager.SubirDegats(20f);
+            if (!_source.isPlaying)
+            {
+                _source.Play();
+            }
         }
 
 
