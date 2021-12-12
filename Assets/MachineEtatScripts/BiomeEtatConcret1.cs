@@ -18,9 +18,9 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
                 break;
             case 1:
                 _unDechet = Resources.Load("Items/colonneI") as GameObject;
-                break; 
+                break;
 
-                    case 2 :
+            case 2:
                 _unDechet = Resources.Load("Items/bouteille") as GameObject;
                 break;
                 
@@ -56,6 +56,7 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
     public override void TriggerEnterEtat(BiomesEtatsManager biome, Collider other)
     {
         biome.StartCoroutine(changementBiome(biome)); //On demarre la Coroutine changementBiome des que biome (le cube) sent un contact
+
     }
 
     //THOMAS ST-PIERRE
@@ -67,8 +68,7 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
         laFumee.transform.parent = biome.transform;
 
         laFumee.Play(); //On demarre le systeme de poussiereBiohazard de biomes a l'instant ou le trigger est activer
-        AudioSource nettoyage = biome.GetComponent<AudioSource>();
-        nettoyage.Play();
+
         float t = 0.0f; //On cree une variable qui representera le temps en secondes et qui sera utiliser par une boucle while
 
         yield return new WaitForSeconds(1f); //On attend quelque secondes avant le de commencer la boucle
@@ -91,4 +91,9 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
         } while (t < 1.0f); //On continu la boucle, tant que t est plus petit que 1.0f
         yield return null;
     }
+
+
+
 }
+
+
