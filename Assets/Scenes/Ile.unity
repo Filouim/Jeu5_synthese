@@ -696,6 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b050ac4415e040b5c5852499fde14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delai: 0.25
 --- !u!1 &777810623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,11 +1245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6833840587945322704, guid: 6c856ce8692bb5c4b90c8be35e5ca0d6, type: 3}
       propertyPath: m_Radius
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6833840587945322704, guid: 6c856ce8692bb5c4b90c8be35e5ca0d6, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833840587945322704, guid: 6c856ce8692bb5c4b90c8be35e5ca0d6, type: 3}
+      propertyPath: m_Center.z
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 6833840587945322705, guid: 6c856ce8692bb5c4b90c8be35e5ca0d6, type: 3}
       propertyPath: m_RootOrder
