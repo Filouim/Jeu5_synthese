@@ -31,16 +31,13 @@ public class Menus : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_introActif) Continuer(_menuIntroUI, _introActif);
-            else Pause(_menuIntroUI, _introActif);
-        }
+        if (!_introActif) Continuer(_menuIntroUI, _introActif);
+        else Pause(_menuIntroUI, _introActif);
 
-        if (_defaiteActif) Continuer(_menuDefaiteUI, _defaiteActif);
+        if (!_defaiteActif) Continuer(_menuDefaiteUI, _defaiteActif);
         else Pause(_menuDefaiteUI, _defaiteActif);
 
-        if (_victoireActif) Continuer(_menuVictoireUI, _victoireActif);
+        if (!_victoireActif) Continuer(_menuVictoireUI, _victoireActif);
         else Pause(_menuVictoireUI, _victoireActif);
     }
 
