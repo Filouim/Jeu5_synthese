@@ -30,7 +30,7 @@ public class EnnemiEtatChasse : EnnemiEtatsBase
             // Ajuste la destination sur la position de la cible
             ennemi.agent.destination = ennemi.cible.transform.position;
 
-            if (MovePerso.instance.estInvincible)
+            if (GameManager.instance._invincible)
             {
                 ennemi.animator.SetBool("isRunning", false);
                 ennemi.ChangerEtat(ennemi.promenade);

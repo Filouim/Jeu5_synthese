@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
     private int _completion = 0; //le niveau de completion du joueur 
+    public bool _invincible;
 
     [SerializeField] private Image _HpContainer; 
 
@@ -150,6 +151,11 @@ public class GameManager : MonoBehaviour
     {
         _sliderObj.value = _completion;
     } 
+
+    public void GetInvinvibilite(bool invin)
+    {
+        _invincible = invin;
+    }
 
     public Color LerpRed(float speed)
     {
