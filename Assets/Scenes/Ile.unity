@@ -628,6 +628,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 919132149518970690}
+--- !u!4 &638804554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 511004316159780922, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
+  m_PrefabInstance: {fileID: 638804551}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +737,7 @@ GameObject:
   - component: {fileID: 769414969}
   - component: {fileID: 769414968}
   - component: {fileID: 769414970}
+  - component: {fileID: 769414971}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -785,6 +791,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delai: 0.25
+--- !u!114 &769414971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769414967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2c641e9ba388f4383fa5767fdaa5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persoControllable: {fileID: 0}
+  persoEtTortue:
+  - {fileID: 1834968374872153745}
+  - {fileID: 638804554}
+  iChooseU: 0
 --- !u!1 &777810623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,3 +2434,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0448a2c30cc97564a8cf0ddb9e178e64, type: 3}
+--- !u!4 &1834968374872153745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2233125152761899880, guid: 0448a2c30cc97564a8cf0ddb9e178e64, type: 3}
+  m_PrefabInstance: {fileID: 1834968374872153744}
+  m_PrefabAsset: {fileID: 0}
