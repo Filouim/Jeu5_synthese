@@ -1218,7 +1218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vitesseRotCam: 5
-  _player: []
+  _player:
+  - {fileID: 919132149518970690}
+  - {fileID: 638804552}
   cameraPeutTourner: 1
   _persoSousControle: 0
 --- !u!1 &980550568
