@@ -10,21 +10,19 @@ public class ChangerScene : MonoBehaviour
     private static ChangerScene _instance;
     public static ChangerScene instance => _instance;
 
-    public void LoadScene(string nomScene)
+    public void ChargerScene(string nomScene)
     {
-        ListeScenes.instance.historiqueScenes.Add(SceneManager.GetActiveScene().name);
-        StartCoroutine(ChangeSceneDelay(nomScene, _delai, false, false));
+        StartCoroutine(ChangeSceneDelai(nomScene, _delai));
     }
 
-    public void LoadPreviousScene()
+    public void RechargerNiveau()
     {
-        StartCoroutine(ChangeSceneDelay("", _delai, true, false));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void LoadNextScene()
+    public void ProchainNiveau()
     {
-        ListeScenes.instance.historiqueScenes.Add(SceneManager.GetActiveScene().name);
-        StartCoroutine(ChangeSceneDelay("", _delai, false, true));
+        StartCoroutine(ChangeSceneDelai("", _delai));
     }
 
     public void QuitterJeu()
@@ -32,12 +30,11 @@ public class ChangerScene : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator ChangeSceneDelay(string nomScene, float delai, bool isPreviousScene, bool isNextScene)
+    private IEnumerator ChangeSceneDelai(string nomScene, float delai)
     {
         yield return new WaitForSeconds(delai);
 
-        if (isPreviousScene && !isNextScene && nomScene == "") ListeScenes.instance.LoadPreviousScene();
-        else if (isNextScene && !isPreviousScene && nomScene == "") SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (nomScene == "") SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else SceneManager.LoadScene(nomScene);
     }
 }
