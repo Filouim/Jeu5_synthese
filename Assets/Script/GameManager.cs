@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         PerdOxygene();
         if (_oxygeneActuel <= 0f)
         {
-            GetComponent<ChangerScene>().LoadScene("Defaite");
+            GetComponent<ChangerScene>().ChargerScene("Defaite");
         }
 
         if(_oxygeneActuel < 30){

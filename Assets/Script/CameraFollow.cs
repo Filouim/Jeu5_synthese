@@ -20,6 +20,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // Si au moins un des menus est actif, la camera ne bouge pas
+        if (Menus._introActif || Menus._defaiteActif || Menus._victoireActif) cameraPeutTourner = false;
+        else if (!Menus._introActif && !Menus._defaiteActif && !Menus._victoireActif) cameraPeutTourner = true;
+
         if(cameraPeutTourner)
         {
             Quaternion camTourne = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _vitesseRotCam, Vector3.up);
