@@ -15,6 +15,7 @@ public class GenerateurIles : MonoBehaviour
     public GameObject dauphin;
     public GameObject perso;
     public GameObject tortue; //#tim Thomas
+    public List<GameObject> listeCible = new List<GameObject>();
     public float tailleEnnemiMin = 0.4f;
     public float tailleEnnemiMax = .75f;
 
@@ -34,20 +35,11 @@ public class GenerateurIles : MonoBehaviour
         GenererListeNaterielsBiomes();
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
-        ApparaitreTortueEtIntelligence();
     }
 
     void Update()
     {
         _unDauphin.transform.LookAt(perso.transform.position);
-    }
-
-    void ApparaitreTortueEtIntelligence()
-    {
-        GameObject laTortue = Instantiate(tortue, new Vector3(0, 3f, 0), Quaternion.identity);
-        Debug.Log(laTortue);
-        laTortue.GetComponent<TortueEtatsManager>().cible = perso;
-        laTortue.GetComponent<TortueEtatsManager>().origine = perso.transform;
     }
 
     //THOMAS ST-PIERRE Genere une liste de biomes selon le dossier Resources
@@ -191,7 +183,7 @@ public class GenerateurIles : MonoBehaviour
                     {
                         float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
                         GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);
-                        unAgent.GetComponent<EnnemiEtatsManager>().cible = perso;
+                        unAgent.GetComponent<EnnemiEtatsManager>().cible = listeCible;
                         unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
                         unAgent.transform.localScale = new Vector3(scaleRandomEnnemi, scaleRandomEnnemi, scaleRandomEnnemi);
                     }

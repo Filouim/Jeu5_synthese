@@ -11,10 +11,16 @@ public class TortueEtatSuivre : TortueEtatsBase
                         tortue.StartCoroutine(Patience(tortue));
             }
 
-            private IEnumerator Patience(TortueEtatsManager tortue)
+            public override void UpdateEtat(TortueEtatsManager tortue)
+            {
+
+            }
+
+            public IEnumerator Patience(TortueEtatsManager tortue)
             {
                         //vitesse tortue
                         tortue.agent.speed = tortue.vitesse;
+
                         //Trouve le perso et le suit
                         tortue.agent.destination = tortue.cible.transform.position; 
 
@@ -25,6 +31,7 @@ public class TortueEtatSuivre : TortueEtatsBase
                         } while (tortue.agent.remainingDistance > tortue.distanceCible);
                         yield return new WaitForSeconds(0.2f);
 
+                        tortue.StopCoroutine(Patience(tortue));
                         tortue.ChangerEtat(tortue.attend);
             }
 }

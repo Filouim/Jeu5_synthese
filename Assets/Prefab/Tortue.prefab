@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 511004316159780922}
+  - component: {fileID: 2150431008202225595}
   - component: {fileID: 44414543125303255}
   - component: {fileID: -3889786487620323703}
   - component: {fileID: 8974212426247557924}
@@ -98,6 +99,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &2150431008202225595
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890766163977794176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &44414543125303255
 Animator:
   serializedVersion: 3
@@ -153,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesse: 10
   distanceCible: 5
+  controller: {fileID: 2150431008202225595}
+  gravite: 0.2
+  velocite: {x: 0, y: 0, z: 0}
 --- !u!1 &905981018361314443
 GameObject:
   m_ObjectHideFlags: 0
