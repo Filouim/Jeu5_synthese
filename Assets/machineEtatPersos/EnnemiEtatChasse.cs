@@ -21,16 +21,16 @@ public class EnnemiEtatChasse : EnnemiEtatsBase
         ennemi.agent.speed = ennemi.vitesseChasse;
 
         // Trouve la cible et la met en destination de l'agent
-        ennemi.agent.destination = ennemi.cible.transform.position;
+        ennemi.agent.destination = ennemi.cible[GameManager.instance.laCibleDesRequins].transform.position;
 
         // Tant que l'agent est a une certaine distance de la cible
         // ou bien que le path n'est pas encore calcule
         while (ennemi.agent.remainingDistance > ennemi.distanceCible || ennemi.agent.pathPending)
         {
             // Ajuste la destination sur la position de la cible
-            ennemi.agent.destination = ennemi.cible.transform.position;
+            ennemi.agent.destination = ennemi.cible[GameManager.instance.laCibleDesRequins].transform.position;
 
-            if (MovePerso.instance.estInvincible)
+            if (GameManager.instance._invincible)
             {
                 ennemi.animator.SetBool("isRunning", false);
                 ennemi.ChangerEtat(ennemi.promenade);

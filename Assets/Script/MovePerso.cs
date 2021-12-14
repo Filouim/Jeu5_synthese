@@ -30,9 +30,6 @@ public class MovePerso : MonoBehaviour
 
 
     public bool estInvincible = false;
-
-    private static MovePerso _instance;
-    public static MovePerso instance => _instance;
     private Vector3 directionsMouvement;
     private Vector3 velocity;
     Animator animator;
@@ -45,15 +42,6 @@ public class MovePerso : MonoBehaviour
         _marche = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
     }
 
     void Start()
@@ -173,7 +161,7 @@ public class MovePerso : MonoBehaviour
         if (other.tag == "Ennemi")
         {
             Debug.Log("L'ennemi a touché le joueur!");
-            if (!estInvincible)
+            if (!_gameManager._invincible)
             {
                 StartCoroutine(Invincible());
                 _gameManager.SubirDegats(10f);
@@ -183,12 +171,12 @@ public class MovePerso : MonoBehaviour
 
     private IEnumerator Invincible()
     {
-        estInvincible = true;
+        _gameManager.GetInvinvibilite(true);
         Debug.Log("Je suis invincible!");
 
         yield return new WaitForSeconds(tempsInvincible);
 
-        estInvincible = false;
+        _gameManager.GetInvinvibilite(false);
         Debug.Log("Je ne suis plus Superman!");
     }
 

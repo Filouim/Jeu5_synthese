@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
     private int _completion = 0; //le niveau de completion du joueur 
+    public bool _invincible;
+    public int laCibleDesRequins = 0;
 
     [SerializeField] private Image _HpContainer; 
 
@@ -150,6 +152,23 @@ public class GameManager : MonoBehaviour
     {
         _sliderObj.value = _completion;
     } 
+    /// <summary>
+    /// Une fonctione qui permet de déterminer l'invincibilité.
+    /// </summary>
+    /// <param name="invin">Un booleen qui represente si le personnage est invincible ou non</param>
+    public void GetInvinvibilite(bool invin)
+    {
+        _invincible = invin;
+    }
+
+    /// <summary>
+    /// Permettra au requin de changer de cible
+    /// </summary>
+    /// <param name="laCible">Represente la cible des requins</param>
+    public void ChangerLaCible(int laCible)
+    {
+        laCibleDesRequins = laCible;
+    }
 
     public Color LerpRed(float speed)
     {
