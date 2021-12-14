@@ -9,7 +9,7 @@ public class Bulles : MonoBehaviour
 
     public AudioSource _bullesPrise;
     private GameManager _gameManager;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +28,12 @@ public class Bulles : MonoBehaviour
     {
         MeshRenderer meshBulle = GetComponent<MeshRenderer>();
 
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             _particulesBulle.Play();
             _gameManager.AjouterOxygene(25f);
+
+
             _bullesPrise.Play();
             meshBulle.enabled = false;
             Debug.Log("He touched me");

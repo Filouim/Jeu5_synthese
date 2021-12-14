@@ -11,6 +11,11 @@ public class TortueEtatAttend : TortueEtatsBase
                         tortue.StartCoroutine(SuitLePerso(tortue));
             }
 
+            public override void UpdateEtat(TortueEtatsManager tortue)
+            {
+                        
+            }
+
             private IEnumerator SuitLePerso(TortueEtatsManager tortue)
             {
                         do
