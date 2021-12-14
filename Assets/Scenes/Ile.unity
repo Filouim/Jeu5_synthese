@@ -763,6 +763,7 @@ MonoBehaviour:
   _maxOxygene: 100
   _delaiPerteOxygene: 1
   _invincible: 0
+  laCibleDesRequins: 0
   _HpContainer: {fileID: 185789936}
 --- !u!4 &769414969
 Transform:
@@ -1003,6 +1004,9 @@ MonoBehaviour:
   dauphin: {fileID: 2723583717456439994, guid: fcc350ec4a01e0a4db9575ee1085eec0, type: 3}
   perso: {fileID: 919132149518970690}
   tortue: {fileID: 890766163977794176, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
+  listeCible:
+  - {fileID: 919132149518970690}
+  - {fileID: 638804552}
   tailleEnnemiMin: 0.4
   tailleEnnemiMax: 0.75
   pasExplorer: {fileID: 2100000, guid: a835fa152af37b44dab2bc063141dc7b, type: 2}
@@ -1166,13 +1170,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.10901012, y: 0.0019020635, z: 0.0012999544, w: 0.994038}
-  m_LocalPosition: {x: 0.32, y: 8.64, z: -9.65}
+  m_LocalRotation: {x: 0.17162031, y: 0.0019804242, z: 0.0011771352, w: 0.98516047}
+  m_LocalPosition: {x: 0.33, y: 9.65, z: -6.67}
   m_LocalScale: {x: 0.75, y: 0.74999994, z: 0.74999994}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 12.516, y: 0.239, z: 0.176}
+  m_LocalEulerAnglesHint: {x: 19.764, y: 0.262, z: 0.183}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
