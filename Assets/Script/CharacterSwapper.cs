@@ -41,10 +41,12 @@ public class CharacterSwapper : MonoBehaviour
             if(iChooseU == 0)
             {
                 iChooseU = persoEtTortue.Count - 1;
+                GameManager.instance.ChangerLaCible(1);
             }
             else
             {
                 iChooseU = 0;
+                GameManager.instance.ChangerLaCible(0);
             }
             Swap();
         }

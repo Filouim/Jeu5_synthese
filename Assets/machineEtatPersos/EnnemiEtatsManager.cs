@@ -13,7 +13,7 @@ public class EnnemiEtatsManager : MonoBehaviour
     public float vitessePromenade = 5f;
     public float distanceCible = 5f;
 
-    public GameObject cible { get; set; }
+    public List<GameObject> cible { get; set; }
     public Transform origine { get; set; }
     public NavMeshAgent agent { get; set; }
     public Animator animator { get; set; }
