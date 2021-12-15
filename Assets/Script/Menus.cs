@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class Menus : MonoBehaviour
 {
-    [SerializeField] private GameObject _menuIntroUI;
-    [SerializeField] private GameObject _menuDefaiteUI;
-    [SerializeField] private GameObject _menuVictoireUI;
+    [SerializeField] private GameObject _menuUI;
     [SerializeField] private GameObject _UIJeu;
     [SerializeField] private float _tempsApparitionIntro = 5f;
 
-    public static bool _introActif = false;
-    public static bool _defaiteActif = false;
-    public static bool _victoireActif = false;
-
-    private static Menus _instance;
-    public static Menus instance => _instance;
+    public bool _menuActif = false;
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
+    /// Awake is called when the script instance is being loaded.
     /// </summary>
-    void Start()
+    void Awake()
     {
-        StartCoroutine(DelaiMenuIntro(_tempsApparitionIntro));
+        _menuActif = false;
+        if (_menuUI.gameObject.name == "MenuIntro") StartCoroutine(DelaiMenuIntro(_tempsApparitionIntro));
     }
 
     /// <summary>
@@ -31,19 +24,13 @@ public class Menus : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (!_introActif) Continuer(_menuIntroUI, _introActif);
-        else Pause(_menuIntroUI, _introActif);
-
-        if (!_defaiteActif) Continuer(_menuDefaiteUI, _defaiteActif);
-        else Pause(_menuDefaiteUI, _defaiteActif);
-
-        if (!_victoireActif) Continuer(_menuVictoireUI, _victoireActif);
-        else Pause(_menuVictoireUI, _victoireActif);
+        if (!_menuActif) Continuer(_menuUI, _menuActif);
+        else Pause(_menuUI, _menuActif);
     }
 
     public void DesactiverIntro()
     {
-        _introActif = false;
+        _menuActif = false;
     }
 
     private void Continuer(GameObject menu, bool actif)
@@ -52,6 +39,7 @@ public class Menus : MonoBehaviour
         _UIJeu.SetActive(true);
         Time.timeScale = 1f;
         actif = false;
+        Debug.Log(menu.gameObject.name + " a été désactivé, et le temps est maintenant de " + Time.timeScale);
     }
 
     private void Pause(GameObject menu, bool actif)
@@ -60,12 +48,13 @@ public class Menus : MonoBehaviour
         _UIJeu.SetActive(false);
         Time.timeScale = 0f;
         actif = true;
+        Debug.Log(menu.gameObject.name + " a été activé, et le temps est maintenant de " + Time.timeScale);
     }
 
     private IEnumerator DelaiMenuIntro(float delai)
     {
         yield return new WaitForSeconds(delai);
 
-        _introActif = true;
+        _menuActif = true;
     }
 }
