@@ -13,12 +13,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _maxOxygene = 100f; // Niveau d'oxygene maximum
     [SerializeField] private float _delaiPerteOxygene = 1f; // Frequence a laquelle le joueur perd de l'oxygene
 
+    public GameObject _menuUIIntro;
+    public GameObject _menuUIDefaite;
+    public GameObject _menuUIVictoire;
     private float _oxygeneActuel; // Niveau d'oxygene actuel
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
     private int _completion = 0; //le niveau de completion du joueur 
     public bool _invincible;
     public int laCibleDesRequins = 0;
+
+    private bool _joueurDefaite = false;
+    private bool _joueurVictoire = false;
 
     [SerializeField] private Image _HpContainer; 
 
@@ -55,10 +61,7 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         PerdOxygene();
-        if (_oxygeneActuel <= 0f)
-        {
-            GetComponent<ChangerScene>().ChargerScene("Defaite");
-        }
+        if (_oxygeneActuel <= 0f) _joueurDefaite = true;
 
         if(_oxygeneActuel < 30){
 
@@ -66,6 +69,15 @@ public class GameManager : MonoBehaviour
         }else{ 
             _HpContainer.color = white;
         }
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (_joueurVictoire) _menuUIVictoire.GetComponent<Menus>()._menuActif = true;
+        else if (_joueurDefaite) _menuUIDefaite.GetComponent<Menus>()._menuActif = true;
     }
 
     // public int DonnePieces()
@@ -138,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public void SetObjectif(int pourcentage)
     {
-        _objectif = (pourcentage * 60) / 100;
+        _objectif = (pourcentage * 70) / 100;
         _sliderObj.maxValue = _objectif;
     }
 
@@ -146,12 +158,15 @@ public class GameManager : MonoBehaviour
     {
         _completion += 1;
         SetObjectifBarre();
+        
+        if (_completion == _objectif) _joueurVictoire = true;
     }
 
     public void SetObjectifBarre()
     {
         _sliderObj.value = _completion;
-    } 
+    }
+
     /// <summary>
     /// Une fonctione qui permet de déterminer l'invincibilité.
     /// </summary>

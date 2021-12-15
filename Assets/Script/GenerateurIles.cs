@@ -13,6 +13,7 @@ public class GenerateurIles : MonoBehaviour
     public float attenuateur;
     public int coefAltitude = 6;
     public GameObject dauphin;
+    public GameObject ennemi;
     public GameObject perso;
     public GameObject tortue; //#tim Thomas
     public List<GameObject> listeCible = new List<GameObject>();
@@ -179,14 +180,18 @@ public class GenerateurIles : MonoBehaviour
                     int rotRandom = Random.Range(0, 4) * 90;
                     GameObject unCube = Instantiate(cube, new Vector3(x - largeurIle / 2, y * coefAltitude, z - profondeurIle / 2), Quaternion.identity); //Instantie un cube a la position donnee
 
-                    if (Random.Range(1, 2000) >= 1999)
+                    if (ennemi)
                     {
-                        float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
-                        GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);
-                        unAgent.GetComponent<EnnemiEtatsManager>().cible = listeCible;
-                        unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
-                        unAgent.transform.localScale = new Vector3(scaleRandomEnnemi, scaleRandomEnnemi, scaleRandomEnnemi);
+                        if (Random.Range(1, 2000) >= 1999)
+                        {
+                            float scaleRandomEnnemi = Random.Range(tailleEnnemiMin, tailleEnnemiMax);
+                            GameObject unAgent = Instantiate((GameObject)Resources.Load("Ennemi/Ennemi"), new Vector3(unCube.transform.position.x, unCube.transform.position.y + 1f, unCube.transform.position.z), Quaternion.identity);
+                            unAgent.GetComponent<EnnemiEtatsManager>().cible = listeCible;
+                            unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
+                            unAgent.transform.localScale = new Vector3(scaleRandomEnnemi, scaleRandomEnnemi, scaleRandomEnnemi);
+                        }
                     }
+                    
 
                     unCube.GetComponent<BiomesEtatsManager>().biomeMateriel = quelBiome;
                     unCube.GetComponent<BiomesEtatsManager>().perso = perso;
