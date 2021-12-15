@@ -45,14 +45,14 @@ public class CameraFollow : MonoBehaviour
         if (_menuUIIntro.activeInHierarchy || _menuUIDefaite.activeInHierarchy || _menuUIVictoire.activeInHierarchy) cameraPeutTourner = false;
         else cameraPeutTourner = true;
 
-        if(cameraPeutTourner)
+        if (cameraPeutTourner)
         {
             Quaternion camTourne = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _vitesseRotCam, Vector3.up);
             _offset = camTourne * _offset;
         }
         transform.position = _player[_persoSousControle].transform.position + _offset;
 
-        if(cameraPeutTourner)
+        if (cameraPeutTourner)
         {
             transform.LookAt(_player[_persoSousControle].transform);
         }
@@ -61,7 +61,7 @@ public class CameraFollow : MonoBehaviour
 
     public void SwitchCamera()
     {
-        if(_persoSousControle == 0)
+        if (_persoSousControle == 0)
         {
             _persoSousControle++;
         }
