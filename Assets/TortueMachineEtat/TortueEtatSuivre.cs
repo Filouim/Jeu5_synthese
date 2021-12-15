@@ -5,33 +5,45 @@ using UnityEngine.AI;
 
 public class TortueEtatSuivre : TortueEtatsBase
 {
-            public override void InitEtat(TortueEtatsManager tortue)
-            {
-                        Debug.Log("Je te suis");
-                        tortue.StartCoroutine(Patience(tortue));
-            }
 
-            public override void UpdateEtat(TortueEtatsManager tortue)
-            {
+    private Coroutine suitPerso = null;
+    private bool _controle = true;
+    public override void InitEtat(TortueEtatsManager tortue)
+    {
+        suitPerso = tortue.StartCoroutine(Patience(tortue));
+        _controle = false;
+    }
 
-            }
+    public override void UpdateEtat(TortueEtatsManager tortue)
+    {
 
-            public IEnumerator Patience(TortueEtatsManager tortue)
-            {
-                        //vitesse tortue
-                        tortue.agent.speed = tortue.vitesse;
+    }
 
-                        //Trouve le perso et le suit
-                        tortue.agent.destination = tortue.cible.transform.position; 
+    public IEnumerator Patience(TortueEtatsManager tortue)
+    {
+        //vitesse tortue    
+        tortue.agent.speed = tortue.vitesse;
 
-                        do
-                        {
-                                    tortue.agent.destination = tortue.cible.transform.position;
-                                    yield return new WaitForSeconds(0.2f);
-                        } while (tortue.agent.remainingDistance > tortue.distanceCible);
-                        yield return new WaitForSeconds(0.2f);
+        //Trouve le perso et le suit
+        tortue.agent.destination = tortue.cible.transform.position; 
 
-                        tortue.StopCoroutine(Patience(tortue));
-                        tortue.ChangerEtat(tortue.attend);
-            }
+        do
+        {
+            tortue.agent.destination = tortue.cible.transform.position;
+            yield return new WaitForSeconds(0.2f);
+        } while (tortue.agent.remainingDistance > tortue.distanceCible && !_controle);
+        yield return new WaitForSeconds(0.2f);
+
+        tortue.ChangerEtat(tortue.attend);
+    }
+
+    public void Arrete(TortueEtatsManager tortue)
+    {
+        if(suitPerso != null)
+        {
+            tortue.StopCoroutine(suitPerso);
+            _controle = true;
+            Debug.Log("STOOOOP");
+        }
+    }
 }

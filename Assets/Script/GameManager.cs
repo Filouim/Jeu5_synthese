@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public void SetObjectif(int pourcentage)
     {
-        _objectif = (pourcentage * 60) / 100;
+        _objectif = (pourcentage * 70) / 100;
         _sliderObj.maxValue = _objectif;
     }
 

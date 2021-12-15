@@ -5,7 +5,7 @@ using UnityEngine;
 public class BiomesEtatsManager : MonoBehaviour
 {
     private BiomesEtatsBase etatActuel;
-    public BiomesEtatConcret1 etat1 = new BiomesEtatConcret1();
+    public BiomesEtatInitial initial = new BiomesEtatInitial();
     public BiomesEtatConcret2 etat2 = new BiomesEtatConcret2();
     public BiomesEtatConcret3 etat3 = new BiomesEtatConcret3();
 
@@ -15,7 +15,7 @@ public class BiomesEtatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangerEtat(etat1);
+        ChangerEtat(initial);
     }
 
     public void ChangerEtat(BiomesEtatsBase etat)

@@ -27,10 +27,6 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
                 case 2:
                     _unObject = Resources.Load("Items/StarI") as GameObject;
                     break;
-                case 3:
-                    _unObject = Resources.Load("Items/coinI") as GameObject;
-                    _unObject.GetComponent<CoinTake>().perso = biome.perso;
-                    break;
                 default:
                     break;
             }
@@ -66,10 +62,6 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
                 if(t >= 0f)
                 {
                     objet.transform.localScale = new Vector3(longueurRandom * .5f * t, hauteurRandom * .5f * t, profondeurRandom * .5f * t);
-                    if(objet.name == "coinI(Clone)")
-                    {
-                        objet.transform.localScale = new Vector3(34.5899f * .5f * t, 34.5899f * .5f * t, 1.237211f * .5f * t);
-                    }
                     Transform positionCube = biome.transform;
 
                 }
