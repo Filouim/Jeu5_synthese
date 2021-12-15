@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BiomesEtatConcret1 : BiomesEtatsBase
+public class BiomesEtatInitial : BiomesEtatsBase
 {
 
     public float positionFumee = 1f;
@@ -11,7 +11,7 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
 
     public override void InitEtat(BiomesEtatsManager biome)
     {
-        switch (Random.Range(0, 30))
+        switch (Random.Range(0, 60))
         {
             case 0:
                 _unDechet = Resources.Load("Items/baril") as GameObject;
@@ -28,7 +28,7 @@ public class BiomesEtatConcret1 : BiomesEtatsBase
                  _unDechet = Resources.Load("Items/prop") as GameObject;
                 break;
 
-                default: 
+            default: 
                 break;
         }
 
