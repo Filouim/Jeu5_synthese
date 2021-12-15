@@ -7,7 +7,6 @@ public class TortueEtatAttend : TortueEtatsBase
 {
     public override void InitEtat(TortueEtatsManager tortue)
     {
-        Debug.Log("Je t'attend'");
         tortue.StartCoroutine(SuitLePerso(tortue));
     }
 

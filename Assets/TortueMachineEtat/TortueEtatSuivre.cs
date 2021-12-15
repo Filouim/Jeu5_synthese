@@ -5,10 +5,13 @@ using UnityEngine.AI;
 
 public class TortueEtatSuivre : TortueEtatsBase
 {
+
+    private Coroutine suitPerso = null;
+    private bool _controle = true;
     public override void InitEtat(TortueEtatsManager tortue)
     {
-        Debug.Log("Je te suis");
-        tortue.StartCoroutine(Patience(tortue));
+        suitPerso = tortue.StartCoroutine(Patience(tortue));
+        _controle = false;
     }
 
     public override void UpdateEtat(TortueEtatsManager tortue)
@@ -28,10 +31,19 @@ public class TortueEtatSuivre : TortueEtatsBase
         {
             tortue.agent.destination = tortue.cible.transform.position;
             yield return new WaitForSeconds(0.2f);
-        } while (tortue.agent.remainingDistance > tortue.distanceCible);
+        } while (tortue.agent.remainingDistance > tortue.distanceCible && !_controle);
         yield return new WaitForSeconds(0.2f);
 
-        tortue.StopCoroutine(Patience(tortue));
         tortue.ChangerEtat(tortue.attend);
+    }
+
+    public void Arrete(TortueEtatsManager tortue)
+    {
+        if(suitPerso != null)
+        {
+            tortue.StopCoroutine(suitPerso);
+            _controle = true;
+            Debug.Log("STOOOOP");
+        }
     }
 }

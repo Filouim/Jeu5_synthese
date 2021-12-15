@@ -7,8 +7,8 @@ public class TortueEtatControler : TortueEtatsBase
 {
     public override void InitEtat(TortueEtatsManager tortue)
     {
-        Debug.Log("Je suis sous ton controle");
-        tortue.StopAllCoroutines();
+        TortueEtatSuivre stop = tortue.suit;
+        stop.Arrete(tortue);
     }
 
     public override void UpdateEtat(TortueEtatsManager tortue)
