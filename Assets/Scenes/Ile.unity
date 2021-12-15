@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9b8f090680dccfc48992be5d30846b3d, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -762,6 +762,9 @@ MonoBehaviour:
   _txtPointage: {fileID: 621194849}
   _maxOxygene: 100
   _delaiPerteOxygene: 1
+  _menuUIIntro: {fileID: 0}
+  _menuUIDefaite: {fileID: 0}
+  _menuUIVictoire: {fileID: 0}
   _invincible: 0
   laCibleDesRequins: 0
   _HpContainer: {fileID: 185789936}
@@ -1002,6 +1005,7 @@ MonoBehaviour:
   attenuateur: 15
   coefAltitude: 6
   dauphin: {fileID: 2723583717456439994, guid: fcc350ec4a01e0a4db9575ee1085eec0, type: 3}
+  ennemi: {fileID: 0}
   perso: {fileID: 919132149518970690}
   tortue: {fileID: 890766163977794176, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
   listeCible:
@@ -1225,6 +1229,9 @@ MonoBehaviour:
   _player:
   - {fileID: 919132149518970690}
   - {fileID: 638804552}
+  _menuUIIntro: {fileID: 0}
+  _menuUIDefaite: {fileID: 0}
+  _menuUIVictoire: {fileID: 0}
   cameraPeutTourner: 1
   _persoSousControle: 0
 --- !u!1 &980550568
