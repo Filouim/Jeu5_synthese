@@ -27,8 +27,7 @@ public class ChangerOxygene : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O)) SubirDegats(20f);
-        if (Input.GetKeyDown(KeyCode.I)) AjouterOxygene(20f);
+
     }
 
     /// <summary>

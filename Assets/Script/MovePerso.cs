@@ -137,30 +137,12 @@ public class MovePerso : MonoBehaviour
         controller.enabled = true;
     }
 
-    /// <summary>
-    /// Fait apparaitre et fait deplacer la tortue (a modifier eventuellement)
-    /// </summary>
-    // private void ApparaitreTortue()
-    // {
-    //     _laTortue = Instantiate(_tortue, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-    // }
-
-    // /// <summary>
-    // /// Fait en sorte que la tortue suive le joueur
-    // /// </summary>
-    // private void DeplacementDeLaTortue()
-    // {
-    //     _laTortue.transform.position = Vector3.MoveTowards(_laTortue.transform.position, transform.position, 7 * Time.deltaTime);
-    //     _laTortue.transform.rotation = transform.rotation;
-    // }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Une collision à été détecté!");
         Debug.Log(other.tag);
         if (other.tag == "Ennemi")
         {
-            Debug.Log("L'ennemi a touché le joueur!");
             if (!_gameManager._invincible)
             {
                 StartCoroutine(Invincible());
@@ -172,12 +154,10 @@ public class MovePerso : MonoBehaviour
     private IEnumerator Invincible()
     {
         _gameManager.GetInvinvibilite(true);
-        Debug.Log("Je suis invincible!");
 
         yield return new WaitForSeconds(tempsInvincible);
 
         _gameManager.GetInvinvibilite(false);
-        Debug.Log("Je ne suis plus Superman!");
     }
 
 

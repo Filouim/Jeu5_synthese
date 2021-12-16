@@ -81,13 +81,6 @@ public class GameManager : MonoBehaviour
         else if (_joueurDefaite) _changerScene.ChargerScene("Defaite");
     }
 
-    // public int DonnePieces()
-    // {
-    //     _nbPieces++;
-    //     AffichePieces();
-    //     return _nbPieces;
-    // }
-
     /// <summary>
     /// Ajuste la barre d'oxygene selon la valeur en parametre.
     /// </summary>
@@ -96,15 +89,6 @@ public class GameManager : MonoBehaviour
     {
         _slider.value = oxygene;
     }
-
-    /// <summary>
-    /// Ajoute un point au champ de texte du pointage.
-    /// </summary>
-    // public void RetirerPoints(int montant)
-    // {
-    //     points = points - montant;
-    //     txtPointage.text = points.ToString();
-    // }
 
     /// <summary>
     /// #Tim Thomas Perd constamment de l'oxygene

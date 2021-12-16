@@ -77,11 +77,8 @@ public class GenerateurIles : MonoBehaviour
 
     void CreerMap()
     {
-        // GenererTerrain(profondeurIle, largeurIle, attenuateur);
-        // float[,] map = GenererBordureEau(profondeurIle, largeurIle);
         float[,] map = GenererInnondationCirculaire(profondeurIle, largeurIle);
         float[,] ile = GenererTerrain(profondeurIle, largeurIle, attenuateur, map);
-        // DessinerIle(ile);
         GenererIle(ile);
     }
 
@@ -116,24 +113,6 @@ public class GenerateurIles : MonoBehaviour
         float k = 15f; //Intensité de la variation
         float c = 0.7f; //Taille generale de l'ile, ici c'est 70% de l'ile
         return 1 / (1 + Mathf.Exp(-k * (value - c))); //Retourne sigmoide, une fonction en S
-    }
-
-    private float[,] GenererBordureEau(int maxZ, int maxX)
-    {
-        float[,] ocean = new float[maxZ, maxX]; //Les coordonnes de l'ocean
-        float centreX = maxX / 2; //le centre de l'ile
-        float centreZ = maxZ / 2; //le centre de l'ile
-        for (int z = 0; z < maxX; z++)
-        {
-            for (int x = 0; x < maxZ; x++)
-            {
-                float yx = (Mathf.Abs(x - centreX) / centreX);
-                float yz = (Mathf.Abs(z - centreZ) / centreZ);
-                float y = Mathf.Max(yx, yz);
-                ocean[z, x] = Sigmoid(y);
-            }
-        }
-        return ocean;
     }
 
     //THOMAS ST-PIERRE Genere une ile rectangulaire
@@ -214,33 +193,5 @@ public class GenerateurIles : MonoBehaviour
                 }
             }
         }
-    }
-
-    //Dessine l'ile sur la texture d'une plane
-    void DessinerIle(float[,] map)
-    {
-        int larg = map.GetLength(0); //La map en largeur
-        int prof = map.GetLength(1); //La map en profondeur
-
-        Texture2D ileTexture = new Texture2D(larg, prof); //Cree un tableau qui contiendrait les informations de position d'une texture
-        Color[] couleursTexture = new Color[larg * prof]; //
-
-        for (int z = 0; z < prof; z++)
-        {
-            for (int x = 0; x < larg; x++)
-            {
-                float y = map[z, x];
-                Color couleur = new Color(y, y, y, 1);
-                // (Pour ligne du dessous) pour s'assurer que le tableau passera de 0 a 100 sans jamais sauter une position, 
-                // on doit multiplier le max avec la largeur présente pour s'en assurer
-                couleursTexture[z * larg + x] = couleur; //0*x: noir (parce qu'il n'y a rien)
-            }
-        }
-        //Dessine ma texture
-        ileTexture.SetPixels(couleursTexture);
-        ileTexture.Apply();
-
-        textureRenderer.sharedMaterial.mainTexture = ileTexture;
-        textureRenderer.transform.localScale = new Vector3(prof, 1, larg);
     }
 }

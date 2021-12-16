@@ -36,7 +36,6 @@ public class Bulles : MonoBehaviour
 
             _bullesPrise.Play();
             meshBulle.enabled = false;
-            Debug.Log("He touched me");
             Destroy(gameObject, 3f);
         }
     }
