@@ -6,8 +6,9 @@ public class BiomesEtatsManager : MonoBehaviour
 {
     private BiomesEtatsBase etatActuel;
     public BiomesEtatInitial initial = new BiomesEtatInitial();
-    public BiomesEtatConcret2 etat2 = new BiomesEtatConcret2();
-    public BiomesEtatConcret3 etat3 = new BiomesEtatConcret3();
+    public BiomesEtatPlante plante = new BiomesEtatPlante();
+    public BiomesEtatFinal final = new BiomesEtatFinal();
+    public BiomesEtatDecor decor = new BiomesEtatDecor();
 
     public int biomeMateriel { get; set; }
     public GameObject perso { get; set; }
