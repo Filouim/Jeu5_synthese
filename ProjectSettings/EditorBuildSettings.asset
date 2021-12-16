@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Titre.unity
     guid: 1a0b1e6bad94dcb479d8604848db5023
   - enabled: 1
-    path: Assets/Scenes/ChoixNiveaux.unity
-    guid: c148b4b1bca82fe40b8fae2bd3b87c48
-  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: ffc70ab2165e5cd49b2363a25dff52ef
   - enabled: 1
     path: Assets/Scenes/Niveau 1.unity
-    guid: da53a65e1b007374894ed73643bf64e4
+    guid: 12239f3bdff354042b86d555312bd343
+  - enabled: 1
+    path: Assets/Scenes/Victoire.unity
+    guid: 4676d64d8a236154082f86d2e3cccde7
+  - enabled: 1
+    path: Assets/Scenes/Defaite.unity
+    guid: 7c13e723fb337df4a952700a90ae6642
   - enabled: 1
     path: Assets/Scenes/Ile.unity
     guid: 0a6b95b4c81cf2444b86f7cf038c5684

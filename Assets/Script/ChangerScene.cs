@@ -7,22 +7,33 @@ public class ChangerScene : MonoBehaviour
 {
     [SerializeField] private float _delai = 0.25f;
 
+    private int _previousScene;
+
     private static ChangerScene _instance;
     public static ChangerScene instance => _instance;
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        _previousScene = PlayerPrefs.GetInt("posScene");
+    }
 
     public void ChargerScene(string nomScene)
     {
         StartCoroutine(ChangeSceneDelai(nomScene, _delai));
     }
 
-    public void RechargerNiveau()
+    public void RecommencerNiveau()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(_previousScene);
     }
 
     public void ProchainNiveau()
     {
-        StartCoroutine(ChangeSceneDelai("", _delai));
+        SceneManager.LoadScene(_previousScene + 1);
     }
 
     public void QuitterJeu()
@@ -34,7 +45,6 @@ public class ChangerScene : MonoBehaviour
     {
         yield return new WaitForSeconds(delai);
 
-        if (nomScene == "") SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        else SceneManager.LoadScene(nomScene);
+        SceneManager.LoadScene(nomScene);
     }
 }

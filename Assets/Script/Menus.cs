@@ -15,10 +15,9 @@ public class Menus : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        _menuActif = false;
-        if (_menuUI.gameObject.name == "MenuIntro") StartCoroutine(DelaiMenuIntro(_tempsApparitionIntro));
+        StartCoroutine(DelaiMenuIntro(_tempsApparitionIntro));
     }
-
+    
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -39,7 +38,6 @@ public class Menus : MonoBehaviour
         _UIJeu.SetActive(true);
         Time.timeScale = 1f;
         actif = false;
-        Debug.Log(menu.gameObject.name + " a été désactivé, et le temps est maintenant de " + Time.timeScale);
     }
 
     private void Pause(GameObject menu, bool actif)
@@ -48,7 +46,6 @@ public class Menus : MonoBehaviour
         _UIJeu.SetActive(false);
         Time.timeScale = 0f;
         actif = true;
-        Debug.Log(menu.gameObject.name + " a été activé, et le temps est maintenant de " + Time.timeScale);
     }
 
     private IEnumerator DelaiMenuIntro(float delai)
