@@ -12,10 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text _txtPointage; // Champ texte du pointage
     [SerializeField] private float _maxOxygene = 100f; // Niveau d'oxygene maximum
     [SerializeField] private float _delaiPerteOxygene = 1f; // Frequence a laquelle le joueur perd de l'oxygene
-
-    public GameObject _menuUIIntro;
-    public GameObject _menuUIDefaite;
-    public GameObject _menuUIVictoire;
+    
     private float _oxygeneActuel; // Niveau d'oxygene actuel
     private int _points = 0; // Nbre de points du perso
     private int _objectif; //l'objectif du joueur
@@ -76,8 +73,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_joueurVictoire) _menuUIVictoire.GetComponent<Menus>()._menuActif = true;
-        else if (_joueurDefaite) _menuUIDefaite.GetComponent<Menus>()._menuActif = true;
+        if (_joueurVictoire) ChangerScene.instance.ChargerScene("Victoire");
+        else if (_joueurDefaite) ChangerScene.instance.ChargerScene("Defaite");
     }
 
     // public int DonnePieces()

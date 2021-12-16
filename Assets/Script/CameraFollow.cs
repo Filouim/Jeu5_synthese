@@ -8,9 +8,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private float _vitesseRotCam = 5f;
     [SerializeField] private List<GameObject> _player = new List<GameObject>();
-    [SerializeField] private GameObject _menuUIIntro;
-    [SerializeField] private GameObject _menuUIDefaite;
-    [SerializeField] private GameObject _menuUIVictoire;
+    [SerializeField] private GameObject _menuUI;
 
     private Vector3 _offset;
 
@@ -42,7 +40,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         // Si au moins un des menus est actif, la camera ne bouge pas
-        if (_menuUIIntro.activeInHierarchy || _menuUIDefaite.activeInHierarchy || _menuUIVictoire.activeInHierarchy) cameraPeutTourner = false;
+        if (_menuUI.activeInHierarchy) cameraPeutTourner = false;
         else cameraPeutTourner = true;
 
         if (cameraPeutTourner)
