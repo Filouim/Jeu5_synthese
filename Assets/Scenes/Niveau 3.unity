@@ -765,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &678745314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,9 +1086,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1155599116}
   _sliderObj: {fileID: 324780766}
+  _txtPointage: {fileID: 0}
   _maxOxygene: 100
   _delaiPerteOxygene: 1
-  _changerScene: {fileID: 1963008854}
+  _menuUIIntro: {fileID: 0}
+  _menuUIDefaite: {fileID: 0}
+  _menuUIVictoire: {fileID: 0}
   _invincible: 0
   laCibleDesRequins: 0
   _HpContainer: {fileID: 185789936}
@@ -1278,7 +1281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estExplorer: 0
-  ennemisDansNiveau: 1
   largeurIle: 125
   profondeurIle: 125
   cube: {fileID: 3063547610600623856, guid: 7ac4884bb4707894d9c45c3abfbb39e2, type: 3}
@@ -1286,6 +1288,7 @@ MonoBehaviour:
   attenuateur: 15
   coefAltitude: 4
   dauphin: {fileID: 2723583717456439994, guid: fcc350ec4a01e0a4db9575ee1085eec0, type: 3}
+  ennemi: {fileID: 0}
   perso: {fileID: 919132149518970690}
   tortue: {fileID: 890766163977794176, guid: 5a9d45bdb0a18d447a5b6ed852c5f731, type: 3}
   listeCible:
@@ -1456,7 +1459,9 @@ MonoBehaviour:
   _player:
   - {fileID: 919132149518970690}
   - {fileID: 638804552}
-  _menuUI: {fileID: 529239616}
+  _menuUIIntro: {fileID: 0}
+  _menuUIDefaite: {fileID: 0}
+  _menuUIVictoire: {fileID: 0}
   cameraPeutTourner: 1
   _persoSousControle: 0
 --- !u!1 &972395782
