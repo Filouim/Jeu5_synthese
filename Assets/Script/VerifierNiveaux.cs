@@ -21,6 +21,6 @@ public class VerifierNiveaux : MonoBehaviour
 
     private void ChargerNiveau()
     {
-        _cs.ChargerScene("Niveau " + _posScene);
+        _cs.ChargerScene("Niveau " + (_posScene - 1));
     }
 }

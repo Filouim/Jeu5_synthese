@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangerScene : MonoBehaviour
 {
-    [SerializeField] private float _delai = 0.25f;
+    [SerializeField] private float _delai = 0f;
 
     private int _previousScene;
 

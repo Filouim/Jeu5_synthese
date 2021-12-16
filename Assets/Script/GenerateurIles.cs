@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class GenerateurIles : MonoBehaviour
 {
     public bool estExplorer;
+    public bool ennemisDansNiveau;
     public int largeurIle = 10;
     public int profondeurIle = 10;
     public GameObject cube;
     public Renderer textureRenderer;
-    public float attenuateur;
-    public int coefAltitude = 6;
+    public float attenuateur = 15f;
+    public int coefAltitude = 4;
     public GameObject dauphin;
-    public GameObject ennemi;
     public GameObject perso;
     public GameObject tortue; //#tim Thomas
     public List<GameObject> listeCible = new List<GameObject>();
@@ -180,7 +180,7 @@ public class GenerateurIles : MonoBehaviour
                     int rotRandom = Random.Range(0, 4) * 90;
                     GameObject unCube = Instantiate(cube, new Vector3(x - largeurIle / 2, y * coefAltitude, z - profondeurIle / 2), Quaternion.identity); //Instantie un cube a la position donnee
 
-                    if (ennemi)
+                    if (ennemisDansNiveau)
                     {
                         if (Random.Range(1, 2000) >= 1999)
                         {
