@@ -10,6 +10,9 @@ public class Progression : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        PlayerPrefs.SetInt("posScene", SceneManager.GetActiveScene().buildIndex);
+        if (SceneManager.GetActiveScene().name == "Intro") PlayerPrefs.DeleteKey("posScene");
+        else PlayerPrefs.SetInt("posScene", SceneManager.GetActiveScene().buildIndex);
+        Debug.Log(PlayerPrefs.GetInt("posScene"));
+        PlayerPrefs.Save();
     }
 }

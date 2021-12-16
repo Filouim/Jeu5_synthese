@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Slider _slider; // Valeur de la barre d'oxygene
     [SerializeField] private Slider _sliderObj; //Valeur de l'objectif
-    [SerializeField] private Text _txtPointage; // Champ texte du pointage
     [SerializeField] private float _maxOxygene = 100f; // Niveau d'oxygene maximum
     [SerializeField] private float _delaiPerteOxygene = 1f; // Frequence a laquelle le joueur perd de l'oxygene
+    [SerializeField] private ChangerScene _changerScene;
     
     private float _oxygeneActuel; // Niveau d'oxygene actuel
     private int _points = 0; // Nbre de points du perso
@@ -73,8 +73,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_joueurVictoire) ChangerScene.instance.ChargerScene("Victoire");
-        else if (_joueurDefaite) ChangerScene.instance.ChargerScene("Defaite");
+        if (_joueurVictoire)
+        {
+            if (SceneManager.GetActiveScene().name == "Niveau 5") _changerScene.ChargerScene("Fin");
+            else _changerScene.ChargerScene("Victoire");
+        } 
+        else if (_joueurDefaite) _changerScene.ChargerScene("Defaite");
     }
 
     // public int DonnePieces()
@@ -91,15 +95,6 @@ public class GameManager : MonoBehaviour
     public void SetOxygene(float oxygene)
     {
         _slider.value = oxygene;
-    }
-
-    /// <summary>
-    /// Ajoute un point au champ de texte du pointage.
-    /// </summary>
-    public void AjouterPoints(int montant)
-    {
-        _points = _points + montant;
-        _txtPointage.text = _points.ToString();
     }
 
     /// <summary>
