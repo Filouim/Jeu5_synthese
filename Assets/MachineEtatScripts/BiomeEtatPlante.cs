@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BiomesEtatConcret2 : BiomesEtatsBase
+public class BiomesEtatPlante : BiomesEtatsBase
 {
     private Vector3 _positionBiome;
     private GameObject _unObject;
@@ -9,27 +9,22 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
     {
         GameManager.instance.ObjectifProgresse();
         Object premierVariant = Resources.Load("Mats/Biomes/b"+biome.biomeMateriel+"_1");
-        int nbRandom = Random.Range(1,10);
-        if(premierVariant.name == "b5_1"){
-            _unObject = Resources.Load("Items/Plantes/plante"+nbRandom) as GameObject;
-        } else {
-            int faitApparaitreObjet = Random.Range(0, 20);
-
-            //Fait apparaitre un plante seulement dans la situation donnée dans le switch case
-            switch (faitApparaitreObjet)
+        //fait pousser des plantes seulement dand le sable et les eponges
+        if(premierVariant.name == "b5_1" || premierVariant.name == "b1_1"){
+            //Pour reduire la quantite de plantes qui produise de l'oxygene
+            switch(Random.Range(0, 6))
             {
-                case 0: 
-                    _unObject = Resources.Load("Items/Plantes/plante"+nbRandom) as GameObject;
-                    break;
-                case 1: 
-                    _unObject = Resources.Load("Items/coquilleI") as GameObject;
-                    break;
-                case 2:
-                    _unObject = Resources.Load("Items/StarI") as GameObject;
+                case 0: case 1:
+                    _unObject = Resources.Load("Items/Plantes/plante"+Random.Range(1, 10)) as GameObject;
                     break;
                 default:
+                    biome.ChangerEtat(biome.final);
                     break;
             }
+        }
+        else
+        {
+            biome.ChangerEtat(biome.decor);
         }
         biome.GetComponent<Renderer>().material = (Material)premierVariant;
     }
@@ -49,7 +44,7 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
         _positionBiome = biome.transform.position;
         if(_unObject != null)
         {
-            GameObject objet = GameObject.Instantiate(_unObject, new Vector3(_positionBiome.x, _positionBiome.y + 1f, _positionBiome.z), Quaternion.identity);
+            GameObject objet = GameObject.Instantiate(_unObject, new Vector3(_positionBiome.x, _positionBiome.y + .5f, _positionBiome.z), Quaternion.identity);
             
             //Change la taille des coraux
             int longueurRandom = Random.Range(4, 8);
@@ -63,7 +58,7 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
                 {
                     objet.transform.localScale = new Vector3(longueurRandom * .5f * t, hauteurRandom * .5f * t, profondeurRandom * .5f * t);
                     Transform positionCube = biome.transform;
-
+                    biome.ChangerEtat(biome.final);
                 }
                 yield return null;
 
@@ -77,7 +72,7 @@ public class BiomesEtatConcret2 : BiomesEtatsBase
             }
             // algues.transform.position = positionCube.position;
         }
-        biome.ChangerEtat(biome.etat3);
+        
         yield return null;
     }
 }

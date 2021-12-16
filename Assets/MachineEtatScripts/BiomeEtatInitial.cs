@@ -11,6 +11,7 @@ public class BiomesEtatInitial : BiomesEtatsBase
 
     public override void InitEtat(BiomesEtatsManager biome)
     {
+        //Fait apparaitre les dechets 
         switch (Random.Range(0, 60))
         {
             case 0:
@@ -78,7 +79,7 @@ public class BiomesEtatInitial : BiomesEtatsBase
 
             if (t > 1.0f) //Lorsque t est plus grand que 1.0f (1 secondes)
             {
-                biome.ChangerEtat(biome.etat2); //On change l'état du biome, ce qui va lui donnant une nouvelle texture, selon sa position
+                biome.ChangerEtat(biome.plante); //On change l'état du biome, ce qui va lui donnant une nouvelle texture, selon sa position
 
                 //On change la rotation du cube biome pour qu'elle soit bien droite (c'est pour empecher d'avoir un terrain "accidentée")
                 int randomRot = Random.Range(0, 4) * 90;
